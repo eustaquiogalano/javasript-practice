@@ -24,3 +24,7 @@ function Book (title, author, pages, isRead) {
 const atomicHabits = new Book("Atomic Habits", "James Clear", 320, "yes");
 console.log(atomicHabits.info());
 
+// prototype
+console.log( Object.getPrototypeOf(atomicHabits) );
+
+console.log( atomicHabits );
