@@ -11,20 +11,48 @@
 
 // console.log( myObject.variable )
 
-function Book (title, author, pages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-    this.info = function() {
-        return `The ${this.title}, written by ${this.author}, has ${this.pages} pages, read already: ${this.isRead}`;       
-    };
+// function Book (title, author, pages, isRead) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.isRead = isRead;
+//     this.info = function() {
+//         return `The ${this.title}, written by ${this.author}, has ${this.pages} pages, read already: ${this.isRead}`;       
+//     };
+// }
+
+// const atomicHabits = new Book("Atomic Habits", "James Clear", 320, "yes");
+// console.log(atomicHabits.info());
+
+// // prototype
+// console.log( Object.getPrototypeOf(atomicHabits) );
+
+// console.log( atomicHabits );
+
+
+//  Prototypal Inheritance
+function Jesus(holiness, power) {
+    this.holiness = 100;
+    this.power = 100;
 }
 
-const atomicHabits = new Book("Atomic Habits", "James Clear", 320, "yes");
-console.log(atomicHabits.info());
+Jesus.prototype.blessPeople = function () {
+    return "God is with us.";
+}
 
-// prototype
-console.log( Object.getPrototypeOf(atomicHabits) );
+function Person(name, religion) {
+    this.name = name;
+    this.religion = religion;
 
-console.log( atomicHabits );
+}
+
+Person.prototype.sayHello = function () {
+    return "Hello fellow christians.";
+}
+
+Object.setPrototypeOf(Person.prototype, Jesus.prototype);  // inherit the prototype method from Jesus object
+const me = new Person("Kyo", "Christian");  // create new Person object 
+
+console.log(me);  // display the person me created 
+console.log( me.sayHello() ); // Person's own prototype
+console.log( me.blessPeople() ); // Person's inherited prototype
