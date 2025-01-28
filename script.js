@@ -47,12 +47,18 @@ function Person(name, religion) {
 }
 
 Person.prototype.sayHello = function () {
-    return "Hello fellow christians.";
+    return `Hello fellow christians, I'm ${this.name}`;
 }
 
 Object.setPrototypeOf(Person.prototype, Jesus.prototype);  // inherit the prototype method from Jesus object
 const me = new Person("Kyo", "Christian");  // create new Person object 
+const wife = new Person("random", "Christian");  // another Person object created 
 
 console.log(me);  // display the person me created 
 console.log( me.sayHello() ); // Person's own prototype
 console.log( me.blessPeople() ); // Person's inherited prototype
+
+console.table( wife );
+
+console.log( wife.sayHello() );
+console.log( wife.blessPeople() );
