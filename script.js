@@ -31,32 +31,59 @@
 
 
 //  Prototypal Inheritance
-function Jesus(holiness, power) {
-    this.holiness = 100;
-    this.power = 100;
-}
+// function Jesus(holiness, power) {
+//     this.holiness = 100;
+//     this.power = 100;
+// }
 
-Jesus.prototype.blessPeople = function () {
-    return "God is with us.";
-}
+// Jesus.prototype.blessPeople = function () {
+//     return "God is with us.";
+// }
 
-function Person(name, religion) {
-    this.name = name;
-    this.religion = religion;
-}
+// function Person(name, religion) {
+//     this.name = name;
+//     this.religion = religion;
+// }
 
-Person.prototype.sayHello = function () {
-    return `Hello fellow christians, I'm ${this.name}`;
-}
+// Person.prototype.sayHello = function () {
+//     return `Hello fellow christians, I'm ${this.name}`;
+// }
 
-Object.setPrototypeOf(Person.prototype, Jesus.prototype);  // inherit the prototype method from Jesus object
+// Object.setPrototypeOf(Person.prototype, Jesus.prototype);  // inherit the prototype method from Jesus object
 
-const me = new Person("Kyo", "Christian");  // create new Person object 
-console.log(me);  // display the person me created 
-console.log( me.sayHello() ); // Person's own prototype
-console.log( me.blessPeople() ); // Person's inherited prototype
+// const me = new Person("Kyo", "Christian");  // create new Person object 
+// console.log(me);  // display the person me created 
+// console.log( me.sayHello() ); // Person's own prototype
+// console.log( me.blessPeople() ); // Person's inherited prototype
 
-const wife = new Person("random", "Christian");  // another Person object created 
-console.table( wife );
-console.log( wife.sayHello() );
-console.log( wife.blessPeople() );
+// const wife = new Person("random", "Christian");  // another Person object created 
+// console.table( wife );
+// console.log( wife.sayHello() );
+// console.log( wife.blessPeople() );
+
+
+let head = {
+    glasses: 1,
+    masked: true,
+};
+  
+let table = {
+    pen: 3,
+    __proto__: head,
+};
+  
+let bed = {
+    sheet: 1,
+    pillow: 2,
+    __proto__: table,
+};
+  
+let pockets = {
+    money: 2000,
+    __proto__: bed,
+};
+
+console.log( pockets.masked );
+console.log( pockets.pen + 5 );
+
+  
