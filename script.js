@@ -62,28 +62,77 @@
 // console.log( wife.blessPeople() );
 
 
-let head = {
-    glasses: 1,
-    masked: true,
-};
+// let head = {
+//     glasses: 1,
+//     masked: true,
+// };
   
-let table = {
-    pen: 3,
-    __proto__: head,
-};
+// let table = {
+//     pen: 3,
+//     __proto__: head,
+// };
   
-let bed = {
-    sheet: 1,
-    pillow: 2,
-    __proto__: table,
-};
+// let bed = {
+//     sheet: 1,
+//     pillow: 2,
+//     __proto__: table,
+// };
   
-let pockets = {
-    money: 2000,
-    __proto__: bed,
+// let pockets = {
+//     money: 2000,
+//     __proto__: bed,
+// };
+
+// console.log( pockets.masked );
+// console.log( pockets.pen + 5 );
+
+
+// fighter constructor 
+
+function Fighter(name, country) {
+    this.name = name;
+    this.country = country;
+
+    // initial stats and attack damage 
+    this. punch = 10;
+    this.kick = 20;
+    this.health = 100;
+
+    // initial self introduction
+    this.info = function() {
+        console.log( `I am ${this.name}, from ${this.country}` );
+    }
+}
+
+// khabib's father
+const abdulmanap = {
+    training: 5,
 };
 
-console.log( pockets.masked );
-console.log( pockets.pen + 5 );
+// fighter creation for main event
+const mcgregor = new Fighter("McGregor", "Ireland");  // with the use of constructor 
+const khabib = { // with the use of object literal
+    name: "Khabib",
+    country: "Russia",
+    punch: 10,
+    kick: 20,
+    health: 100,
+    __proto__: abdulmanap,
 
-  
+    info: function() {
+        console.log( `I am ${this.name}, from ${this.country}` );
+        
+    }
+};
+
+// fighter's self introduction
+mcgregor.info();  
+khabib.info();
+
+// khabib's father trained him and inherited some power 
+khabib.punch += khabib.training;  // +5 punch power
+khabib.kick += khabib.training;  // +5 kick power  
+
+console.table( khabib );
+
+
