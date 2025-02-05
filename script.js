@@ -89,50 +89,80 @@
 
 // fighter constructor 
 
-function Fighter(name, country) {
-    this.name = name;
-    this.country = country;
+// function Fighter(name, country) {
+//     this.name = name;
+//     this.country = country;
 
-    // initial stats and attack damage 
-    this. punch = 10;
-    this.kick = 20;
-    this.health = 100;
+//     // initial stats and attack damage 
+//     this. punch = 10;
+//     this.kick = 20;
+//     this.health = 100;
 
-    // initial self introduction
-    this.info = function() {
-        console.log( `I am ${this.name}, from ${this.country}` );
-    }
-}
+//     // initial self introduction
+//     this.info = function() {
+//         console.log( `I am ${this.name}, from ${this.country}` );
+//     }
+// }
 
 // khabib's father
-const abdulmanap = {
-    training: 5,
-};
+// const abdulmanap = {
+//     training: 5,
+// };
 
-// fighter creation for main event
-const mcgregor = new Fighter("McGregor", "Ireland");  // with the use of constructor 
-const khabib = { // with the use of object literal
-    name: "Khabib",
-    country: "Russia",
-    punch: 10,
-    kick: 20,
-    health: 100,
-    __proto__: abdulmanap,
+// // fighter creation for main event
+// const mcgregor = new Fighter("McGregor", "Ireland");  // with the use of constructor 
+// const khabib = { // with the use of object literal
+//     name: "Khabib",
+//     country: "Russia",
+//     punch: 10,
+//     kick: 20,
+//     health: 100,
+//     __proto__: abdulmanap,
 
-    info: function() {
-        console.log( `I am ${this.name}, from ${this.country}` );
+//     info: function() {
+//         console.log( `I am ${this.name}, from ${this.country}` );
         
-    }
-};
+//     }
+// };
 
-// fighter's self introduction
-mcgregor.info();  
-khabib.info();
+// // fighter's self introduction
+// mcgregor.info();  
+// khabib.info();
 
-// khabib's father trained him and inherited some power 
-khabib.punch += khabib.training;  // +5 punch power
-khabib.kick += khabib.training;  // +5 kick power  
+// // khabib's father trained him and inherited some power 
+// khabib.punch += khabib.training;  // +5 punch power
+// khabib.kick += khabib.training;  // +5 kick power  
 
-console.table( khabib );
+// console.table( khabib );
+
+
+
+// Factory Function
+
+function createfighter(name, weight) {
+    const kgs = weight;
+
+    const introduce = () => `I am ${name}, weighing ${90}kgs` ;
+
+    return { name, kgs, greet: introduce};
+}
+
+// created a fighter using factory function
+const khabib = createfighter("Khabib", 90);
+console.table( khabib );  // display the khabib object fighter 
+
+function createSon(name, weight) {
+    const son = createfighter(name, weight);
+
+    const increaseWeight = () => ++kyo.kgs;
+    return Object.assign({}, son, { increaseWeight });
+}
+
+const kyo = createSon("Kyo", 55);
+kyo.increaseWeight();
+kyo.increaseWeight();
+kyo.kgs = kyo.increaseWeight();
+
+console.table(kyo);
 
 
