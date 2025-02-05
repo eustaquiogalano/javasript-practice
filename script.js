@@ -139,30 +139,54 @@
 
 // Factory Function
 
-function createfighter(name, weight) {
-    const kgs = weight;
+// function createfighter(name, weight) {
+//     const kgs = weight;
 
-    const introduce = () => `I am ${name}, weighing ${90}kgs` ;
+//     const introduce = () => `I am ${name}, weighing ${90}kgs` ;
 
-    return { name, kgs, greet: introduce};
-}
+//     return { name, kgs, greet: introduce};
+// }
 
-// created a fighter using factory function
-const khabib = createfighter("Khabib", 90);
-console.table( khabib );  // display the khabib object fighter 
+// // created a fighter using factory function
+// const khabib = createfighter("Khabib", 90);
+// console.table( khabib );  // display the khabib object fighter 
 
-function createSon(name, weight) {
-    const son = createfighter(name, weight);
+// function createSon(name, weight) {
+//     const son = createfighter(name, weight);
 
-    const increaseWeight = () => ++kyo.kgs;
-    return Object.assign({}, son, { increaseWeight });
-}
+//     const increaseWeight = () => ++kyo.kgs;
+//     return Object.assign({}, son, { increaseWeight });
+// }
 
-const kyo = createSon("Kyo", 55);
-kyo.increaseWeight();
-kyo.increaseWeight();
-kyo.kgs = kyo.increaseWeight();
+// const kyo = createSon("Kyo", 55);
+// kyo.increaseWeight();
+// kyo.increaseWeight();
+// kyo.kgs = kyo.increaseWeight();
 
-console.table(kyo);
+// console.table(kyo);
+
+
+
+// Immediately Invoked Function Expression (IIFE)
+
+// create function then invoked right after creating the function
+// Regular function and Arrow function works
+// (function() {
+//     alert("hello");
+// })();
+
+
+// complex example
+const operate = (() => {
+    const add = (a, b) => a + b;
+    const sub = (a, b) => a - b;
+    const mul = (a, b) => a * b;
+    const div = (a, b) => a / b;
+    return { addition: add, sub, mul, div };
+})();
+
+console.log( operate );
+console.log( operate.addition(1, 11) );
+console.log( operate.mul(5, 5) );
 
 
