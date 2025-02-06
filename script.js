@@ -176,17 +176,50 @@
 // })();
 
 
-// complex example
-const operate = (() => {
-    const add = (a, b) => a + b;
-    const sub = (a, b) => a - b;
-    const mul = (a, b) => a * b;
-    const div = (a, b) => a / b;
-    return { addition: add, sub, mul, div };
-})();
+// // complex example
+// const operate = (() => {
+//     const add = (a, b) => a + b;
+//     const sub = (a, b) => a - b;
+//     const mul = (a, b) => a * b;
+//     const div = (a, b) => a / b;
+//     return { addition: add, sub, mul, div };
+// })();
 
-console.log( operate );
-console.log( operate.addition(1, 11) );
-console.log( operate.mul(5, 5) );
+// console.log( operate );
+// console.log( operate.addition(1, 11) );
+// console.log( operate.mul(5, 5) );
+
+
+// CLOSURES
+// examples
+
+// function outerFn() {
+//     const outerVar = "Im outer var";
+
+//     return function() {
+//         const innerVar = "Im inner var";
+//         console.log(innerVar);
+//         console.log(outerVar);
+//     }
+// }
+
+// const clos = outerFn();
+
+// console.log( clos() );  // I was able to access "outerVar" because of closure
+
+function greeting(greeting = '') {
+    const greet = greeting.toLocaleUpperCase();
+
+    return function(name) {
+        return `${greet}! ${name}`;
+    }
+}
+
+const hello = greeting("Hello");
+console.log( hello("Kyo") );
+
+const goodEvening = greeting("Good evening");
+console.log( goodEvening("Jesus") );
+
 
 
