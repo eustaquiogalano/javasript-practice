@@ -207,19 +207,51 @@
 
 // console.log( clos() );  // I was able to access "outerVar" because of closure
 
-function greeting(greeting = '') {
-    const greet = greeting.toLocaleUpperCase();
+// function greeting(greeting = '') {
+//     const greet = greeting.toLocaleUpperCase();
 
-    return function(name) {
-        return `${greet}! ${name}`;
-    }
+//     return function(name) {
+//         return `${greet}! ${name}`;
+//     }
+// }
+
+// const hello = greeting("Hello");
+// console.log( hello("Kyo") );
+
+// const goodEvening = greeting("Good evening");
+// console.log( goodEvening("Jesus") );
+
+
+
+// PRIVATE VARIABLES in closures
+
+function createGame(gameName) {
+    let score = 0;
+
+    return function() {
+        score++;
+        return `
+        Game: ${gameName}
+        Score: ${score}`;
+    };
 }
 
-const hello = greeting("Hello");
-console.log( hello("Kyo") );
+const basketball = createGame("Basketball");
 
-const goodEvening = greeting("Good evening");
-console.log( goodEvening("Jesus") );
+basketball();
+basketball();
+console.log( basketball() );
+
+
+const baseball = createGame("Baseball");
+
+for (let i = 0; i <= 8; i++) {
+    baseball();
+    if (i === 8) {
+        console.log( baseball() );
+        
+    };
+}
 
 
 
