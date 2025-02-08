@@ -225,33 +225,65 @@
 
 // PRIVATE VARIABLES in closures
 
-function createGame(gameName) {
-    let score = 0;
+// function createGame(gameName) {
+//     let score = 0;
 
-    return function() {
-        score++;
-        return `
-        Game: ${gameName}
-        Score: ${score}`;
-    };
-}
+//     return function() {
+//         score++;
+//         return `
+//         Game: ${gameName}
+//         Score: ${score}`;
+//     };
+// }
 
-const basketball = createGame("Basketball");
+// const basketball = createGame("Basketball");
 
-basketball();
-basketball();
-console.log( basketball() );
+// basketball();
+// basketball();
+// console.log( basketball() );
 
 
-const baseball = createGame("Baseball");
+// const baseball = createGame("Baseball");
 
-for (let i = 0; i <= 8; i++) {
-    baseball();
-    if (i === 8) {
-        console.log( baseball() );
+// for (let i = 0; i <= 8; i++) {
+//     baseball();
+//     if (i === 8) {
+//         console.log( baseball() );
         
-    };
-}
+//     };
+// }
 
+
+
+
+// MODULE PATTERN
+
+// IIFE
+
+const sampleModule = (function() {
+    
+
+    // private method - accessible only inside this module
+    const privateMethod = () => console.log("Inside module");
+
+
+    // public method - accessible in and outside of this module
+    const addition = (a, b) => {
+        privateMethod();  // invoke private method 
+       return a + b; 
+    };
+
+
+    // this module will return an object with public methods/functions 
+    return {
+        addition,
+    }
+
+})();
+
+// variable plus holds the object returned from sampleModule module
+const plus = sampleModule;  
+
+console.log( plus.addition(10, 1) );
 
 
