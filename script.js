@@ -262,6 +262,11 @@
 
 const sampleModule = (function() {
     
+    // Primitive variable private variable
+    let increaseByFive = 5;
+
+    // public array
+    let number = [];
 
     // private method - accessible only inside this module
     const privateMethod = () => console.log("Inside module");
@@ -270,13 +275,21 @@ const sampleModule = (function() {
     // public method - accessible in and outside of this module
     const addition = (a, b) => {
         privateMethod();  // invoke private method 
-       return a + b; 
+
+        // each time this function gets invoke push 
+        // the current value of increaseByFive value to number array
+        number.push(increaseByFive);
+        console.log(number);
+        
+        // return increaseByFive variable
+        return increaseByFive = increaseByFive + a + b ; 
     };
 
 
     // this module will return an object with public methods/functions 
     return {
         addition,
+        number,
     }
 
 })();
@@ -284,6 +297,14 @@ const sampleModule = (function() {
 // variable plus holds the object returned from sampleModule module
 const plus = sampleModule;  
 
+plus.addition(1, 1);
+
+console.log( plus.number );
+
+plus.addition(1, 1);
+plus.addition(1, 1);
+
+console.log( plus.number );
+
+plus.addition(1, 1);
 console.log( plus.addition(10, 1) );
-
-
