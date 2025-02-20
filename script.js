@@ -260,51 +260,92 @@
 
 // IIFE
 
-const sampleModule = (function() {
+// const sampleModule = (function() {
     
-    // Primitive variable private variable
-    let increaseByFive = 5;
+//     // Primitive variable private variable
+//     let increaseByFive = 5;
 
-    // public array
-    let number = [];
+//     // public array
+//     let number = [];
 
-    // private method - accessible only inside this module
-    const privateMethod = () => console.log("Inside module");
+//     // private method - accessible only inside this module
+//     const privateMethod = () => console.log("Inside module");
 
 
-    // public method - accessible in and outside of this module
-    const addition = (a, b) => {
-        privateMethod();  // invoke private method 
+//     // public method - accessible in and outside of this module
+//     const addition = (a, b) => {
+//         privateMethod();  // invoke private method 
 
-        // each time this function gets invoke push 
-        // the current value of increaseByFive value to number array
-        number.push(increaseByFive);
-        console.log(number);
+//         // each time this function gets invoke push 
+//         // the current value of increaseByFive value to number array
+//         number.push(increaseByFive);
+//         console.log(number);
         
-        // return increaseByFive variable
-        return increaseByFive = increaseByFive + a + b ; 
-    };
+//         // return increaseByFive variable
+//         return increaseByFive = increaseByFive + a + b ; 
+//     };
 
 
-    // this module will return an object with public methods/functions 
-    return {
-        addition,
-        number,
-    }
+//     // this module will return an object with public methods/functions 
+//     return {
+//         addition,
+//         number,
+//     }
 
-})();
+// })();
 
-// variable plus holds the object returned from sampleModule module
-const plus = sampleModule;  
+// // variable plus holds the object returned from sampleModule module
+// const plus = sampleModule;  
 
-plus.addition(1, 1);
+// plus.addition(1, 1);
 
-console.log( plus.number );
+// console.log( plus.number );
 
-plus.addition(1, 1);
-plus.addition(1, 1);
+// plus.addition(1, 1);
+// plus.addition(1, 1);
 
-console.log( plus.number );
+// console.log( plus.number );
 
-plus.addition(1, 1);
-console.log( plus.addition(10, 1) );
+// plus.addition(1, 1);
+// console.log( plus.addition(10, 1) );
+
+
+
+// GETTERS and SETTER
+
+// let user = {
+//     name: "Kyle",
+//     surname: "Meddy",
+    
+//     get fullName() {
+//         return `${this.name} ${this.surname}`;
+//     },
+
+//     set fullName(fName) {
+//         [this.name, this.surname] = fName.split(" ");
+//     }
+// };
+
+// console.log( user.fullName );
+
+// user.fullName = "Walter Mart";
+
+// console.log( user.fullName );
+// console.log( user );
+
+// Object.defineProperty(user, "nickname", {
+//     get() {
+//         return `${this.nickname}`;
+//     },
+//     set(alias) {
+//         nickname = alias;
+//     }
+// });
+
+// user.alias = "Mamba";
+
+// console.log(user);
+
+
+
+
