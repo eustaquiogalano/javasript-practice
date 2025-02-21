@@ -66,18 +66,18 @@
 //     glasses: 1,
 //     masked: true,
 // };
-  
+
 // let table = {
 //     pen: 3,
 //     __proto__: head,
 // };
-  
+
 // let bed = {
 //     sheet: 1,
 //     pillow: 2,
 //     __proto__: table,
 // };
-  
+
 // let pockets = {
 //     money: 2000,
 //     __proto__: bed,
@@ -121,7 +121,7 @@
 
 //     info: function() {
 //         console.log( `I am ${this.name}, from ${this.country}` );
-        
+
 //     }
 // };
 
@@ -249,7 +249,7 @@
 //     baseball();
 //     if (i === 8) {
 //         console.log( baseball() );
-        
+
 //     };
 // }
 
@@ -261,7 +261,7 @@
 // IIFE
 
 // const sampleModule = (function() {
-    
+
 //     // Primitive variable private variable
 //     let increaseByFive = 5;
 
@@ -280,7 +280,7 @@
 //         // the current value of increaseByFive value to number array
 //         number.push(increaseByFive);
 //         console.log(number);
-        
+
 //         // return increaseByFive variable
 //         return increaseByFive = increaseByFive + a + b ; 
 //     };
@@ -316,7 +316,7 @@
 // let user = {
 //     name: "Kyle",
 //     surname: "Meddy",
-    
+
 //     get fullName() {
 //         return `${this.name} ${this.surname}`;
 //     },
@@ -347,5 +347,104 @@
 // console.log(user);
 
 
+// class User {
+//     nickname = prompt("Name please?");
+//     constructor(name, age) {
+//         this.name = name;
+//         this.age = age;
+//     }
+
+//     sayAge() {
+//         return this.age;
+//     }
+
+//     sayName() {
+//         return this.name
+//     }
+// }
+
+// const walter = new User("Walter" , 34); 
+// console.log( walter.sayAge() );
+// console.log(walter.sayName());
+
+// const mark = new User();
+// console.log(mark.nickname);
+// console.log(mark);
+
+// function Clock({ template }) {
+
+//     let timer;
+
+//     function render() {
+//         let date = new Date();
+
+//         let hours = date.getHours();
+//         if (hours < 10) hours = '0' + hours;
+
+//         let mins = date.getMinutes();
+//         if (mins < 10) mins = '0' + mins;
+
+//         let secs = date.getSeconds();
+//         if (secs < 10) secs = '0' + secs;
+
+//         let output = template
+//             .replace('h', hours)
+//             .replace('m', mins)
+//             .replace('s', secs);
+
+//         console.log(output);
+//     }
+
+//     this.stop = function () {
+//         clearInterval(timer);
+//     };
+
+//     this.start = function () {
+//         render();
+//         timer = setInterval(render, 1000);
+//     };
+
+// }
+
+// let clock = new Clock({ template: 'h:m:s' });
+// //   clock.start();
 
 
+
+// class Clock {
+//     constructor({ template }) {
+//         this.template = template;
+//     }
+
+//     render() {
+//         let date = new Date();
+
+//         let hours = date.getHours();
+//         if (hours < 10) hours = '0' + hours;
+
+//         let mins = date.getMinutes();
+//         if (mins < 10) mins = '0' + mins;
+
+//         let secs = date.getSeconds();
+//         if (secs < 10) secs = '0' + secs;
+
+//         let output = this.template
+//             .replace('h', hours)
+//             .replace('m', mins)
+//             .replace('s', secs);
+
+//         console.log(output);
+//     }
+
+//     stop() {
+//         clearInterval(this.timer);
+//     }
+
+//     start() {
+//         this.render();
+//         this.timer = setInterval(() => this.render(), 1000);
+//     }
+// }
+
+// let clock = new Clock({ template: 'h:m:s' });
+// clock.start();
