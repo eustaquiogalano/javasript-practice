@@ -410,7 +410,6 @@
 // //   clock.start();
 
 
-
 // class Clock {
 //     constructor({ template }) {
 //         this.template = template;
@@ -448,3 +447,75 @@
 
 // let clock = new Clock({ template: 'h:m:s' });
 // clock.start();
+
+
+// class Sports {
+//     constructor(name, numberOfPlayersPerTeam, yearOriginated) {
+//         this.name = name;
+//         this.numberOfPlayersPerTeam = numberOfPlayersPerTeam;
+//         this.yearOriginated = yearOriginated;
+//     }
+
+
+// }
+
+// function Sports(name, numberOfPlayersPerTeam, yearOriginated) {
+//     this.name = name;
+//     this.numberOfPlayersPerTeam = numberOfPlayersPerTeam;
+//     this.yearOriginated = yearOriginated;
+
+//     this.getInfo = function () {
+//         return `${this.name} was originated way back ${this.yearOriginated}, 
+//             and needed ${numberOfPlayersPerTeam} each team to play.`;
+//     };
+// }
+
+
+
+class Sports {
+    // static  belongs to the class itself instead of instances
+    static sportsCount = 0;
+
+    // constructors gets called when creating an instance  
+    constructor(name, numberOfPlayersPerTeam, yearOriginated) {
+        this._name = name;
+        this.numberOfPlayersPerTeam = numberOfPlayersPerTeam;
+        this.yearOriginated = yearOriginated;
+        Sports.sportsCount++;
+    }
+
+    // static  belongs to the class itself instead of instances
+    static getSportsCount() {
+        return `Registered Sports: ${Sports.sportsCount}`;
+    }
+
+    // methods
+    getInfo() {
+        return `${this.name} was originated way back ${this.yearOriginated}, 
+            and needed ${this.numberOfPlayersPerTeam} each team to play.`;
+    }
+
+    // getter
+    get name() {
+        return this._name;
+    }
+
+    // setter
+    set name(value) {
+        this._name = value;
+    }
+}
+
+
+const basketball = new Sports("Basketball", 5, 1891);
+console.log(basketball.getInfo());
+
+const voleyball = new Sports("Voleyball", 6, 1895);
+console.log(voleyball.getInfo());
+voleyball.name = "vBall";
+console.log(voleyball.name);
+
+console.log(Sports.getSportsCount());
+
+
+
