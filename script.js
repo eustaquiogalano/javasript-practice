@@ -693,34 +693,67 @@
 
 // 6. Employee and Manager Classes with Salary Calculation
 
-class Employee {
-    constructor(name, salary) {
-        this.name = name;
-        this.salary = salary;
-    }
+// class Employee {
+//     constructor(name, salary) {
+//         this.name = name;
+//         this.salary = salary;
+//     }
 
-    calculateAnnualSalary() {
-        console.log(`Annual Salary: ${this.salary * 12}`);
-        return this.salary * 12;
-    }
-}
+//     calculateAnnualSalary() {
+//         console.log(`Annual Salary: ${this.salary * 12}`);
+//         return this.salary * 12;
+//     }
+// }
 
-class Manager extends Employee {
+// class Manager extends Employee {
    
 
-    constructor(name, salary, department) {
-        super(name, salary);
-        this.department = department;
+//     constructor(name, salary, department) {
+//         super(name, salary);
+//         this.department = department;
+//     }
+
+//     calculateAnnualSalary() {  
+//         const bonus = 0.5;
+//         const baseSalary = super.calculateAnnualSalary();
+//         const bonusAmount = baseSalary * bonus;
+//         console.log(`Annual Salary with bonus: ${bonusAmount + baseSalary}`);
+//     }
+// }
+
+// const kyoManager = new Manager("Eustaquio Galano II", 50000, "IT");
+// kyoManager.calculateAnnualSalary();
+// console.log(kyoManager);
+
+// 7. Book and Ebook Classes with Price
+
+class Book {
+    constructor(title, author, year) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
     }
 
-    calculateAnnualSalary() {  
-        const bonus = 0.5;
-        const baseSalary = super.calculateAnnualSalary();
-        const bonusAmount = baseSalary * bonus;
-        console.log(`Annual Salary with bonus: ${bonusAmount + baseSalary}`);
+    displayDetails() {
+        console.log(`Title: ${this.title}`);
+        console.log(`Author: ${this.author}`);
+        console.log(`Year:${this.year}`);      
     }
 }
 
-const kyoManager = new Manager("Eustaquio Galano II", 50000, "IT");
-kyoManager.calculateAnnualSalary();
-console.log(kyoManager);
+class Ebook extends Book {
+    constructor(title, author, year, price) {
+        super(title, author, year);
+        this.price = price;
+    }
+
+    displayDetails() {
+        super.displayDetails();
+        console.log(`Price: $${this.price}`);
+    }
+}
+
+const theBook = new Ebook("Walter", "Mike", 2025, 99.98);
+theBook.displayDetails();
+
+
