@@ -476,20 +476,32 @@ class Sports {
     // static  belongs to the class itself instead of instances
     static sportsCount = 0;
 
+    // private class field
+    #samplePrivateCount = 0;
+
     // constructors gets called when creating an instance  
     constructor(name, numberOfPlayersPerTeam, yearOriginated) {
         this._name = name;
         this.numberOfPlayersPerTeam = numberOfPlayersPerTeam;
         this.yearOriginated = yearOriginated;
         Sports.sportsCount++;
+        this.#samplePrivateCount++;
     }
+
+    // method
+    getPrivateCount() {
+        return this.#samplePrivateCount;
+    }
+
+    // class feild
+    sampleClassFiled = `I am a public feild/property, in ${this._name}`;
 
     // static  belongs to the class itself instead of instances
     static getSportsCount() {
         return `Registered Sports: ${Sports.sportsCount}`;
     }
 
-    // methods
+    // method
     getInfo() {
         return `${this.name} was originated way back ${this.yearOriginated}, 
             and needed ${this.numberOfPlayersPerTeam} each team to play.`;
@@ -498,7 +510,7 @@ class Sports {
     // getter
     get name() {
         return this._name;
-    }
+    }   
 
     // setter
     set name(value) {
@@ -508,14 +520,18 @@ class Sports {
 
 
 const basketball = new Sports("Basketball", 5, 1891);
-console.log(basketball.getInfo());
+console.log(basketball.sampleClassFiled);
+// console.log(basketball.getInfo());
 
 const voleyball = new Sports("Voleyball", 6, 1895);
-console.log(voleyball.getInfo());
-voleyball.name = "vBall";
-console.log(voleyball.name);
+
+// console.log(voleyball.getInfo());
+// voleyball.name = "vBall";
+// console.log(voleyball.name);
 
 console.log(Sports.getSportsCount());
+console.log(voleyball.getPrivateCount());
+
 
 
 
