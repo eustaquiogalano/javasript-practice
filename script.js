@@ -727,33 +727,59 @@
 
 // 7. Book and Ebook Classes with Price
 
-class Book {
-    constructor(title, author, year) {
-        this.title = title;
-        this.author = author;
-        this.year = year;
+// class Book {
+//     constructor(title, author, year) {
+//         this.title = title;
+//         this.author = author;
+//         this.year = year;
+//     }
+
+//     displayDetails() {
+//         console.log(`Title: ${this.title}`);
+//         console.log(`Author: ${this.author}`);
+//         console.log(`Year:${this.year}`);      
+//     }
+// }
+
+// class Ebook extends Book {
+//     constructor(title, author, year, price) {
+//         super(title, author, year);
+//         this.price = price;
+//     }
+
+//     displayDetails() {
+//         super.displayDetails();
+//         console.log(`Price: $${this.price}`);
+//     }
+// }
+
+// const theBook = new Ebook("Walter", "Mike", 2025, 99.98);
+// theBook.displayDetails();
+
+// 8. DOg class
+class Animal {
+    constructor(species, sound) {
+        this.species = species;
+        this.sound = sound;
     }
 
-    displayDetails() {
-        console.log(`Title: ${this.title}`);
-        console.log(`Author: ${this.author}`);
-        console.log(`Year:${this.year}`);      
+    makeSound() {
+        console.log(`${this.sound}`);
     }
 }
 
-class Ebook extends Book {
-    constructor(title, author, year, price) {
-        super(title, author, year);
-        this.price = price;
+class Dog extends Animal {
+    constructor(species, sound, color) {
+        super(species, sound);
+        this.color = color;
     }
 
-    displayDetails() {
-        super.displayDetails();
-        console.log(`Price: $${this.price}`);
+    makeSound() {
+        super.makeSound();
+        console.log(`${this.color} dog`);
+        
     }
 }
 
-const theBook = new Ebook("Walter", "Mike", 2025, 99.98);
-theBook.displayDetails();
-
-
+const bong = new Dog("Dog", "ARF! ARF!", "Brown");
+bong.makeSound();
