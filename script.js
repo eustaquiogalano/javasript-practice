@@ -651,42 +651,76 @@
 
 // 5. Shape, Circle, and Triangle Classes with Area Calculation
 
-class Shape {
-    calculateArea() {
-        throw new Error("Must be overridden in subclass. Wag dito sa iba nalang ");
+// class Shape {
+//     calculateArea() {
+//         throw new Error("Must be overridden in subclass. Wag dito sa iba nalang ");
+//     }
+// }
+
+// class Circle extends Shape {
+//     constructor(radius) {
+//         super();
+//         this.radius = radius;
+//     }
+
+//     calculateArea() {
+//         console.log(`Area: ${Math.PI * Math.pow(this.radius,2)}`);
+//     }
+// }
+
+// const smallC = new Circle(5);
+// smallC.calculateArea();
+
+
+// class Triangle extends Shape {
+//     constructor(base, height) {
+//         super();
+//         this.base = base;
+//         this.height = height;
+//     }
+
+//     calculateArea() {
+//         console.log(`Area: ${1/2 * this.base * this.height}`);
+//     }
+// }
+
+// const tri = new Triangle(8, 5);
+// tri.calculateArea();
+
+
+// const hugis = new Shape();
+// hugis.calculateArea();
+
+// 6. Employee and Manager Classes with Salary Calculation
+
+class Employee {
+    constructor(name, salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    calculateAnnualSalary() {
+        console.log(`Annual Salary: ${this.salary * 12}`);
+        return this.salary * 12;
     }
 }
 
-class Circle extends Shape {
-    constructor(radius) {
-        super();
-        this.radius = radius;
+class Manager extends Employee {
+   
+
+    constructor(name, salary, department) {
+        super(name, salary);
+        this.department = department;
     }
 
-    calculateArea() {
-        console.log(`Area: ${Math.PI * Math.pow(this.radius,2)}`);
-    }
-}
-
-const smallC = new Circle(5);
-smallC.calculateArea();
-
-
-class Triangle extends Shape {
-    constructor(base, height) {
-        super();
-        this.base = base;
-        this.height = height;
-    }
-
-    calculateArea() {
-        console.log(`Area: ${1/2 * this.base * this.height}`);
+    calculateAnnualSalary() {  
+        const bonus = 0.5;
+        const baseSalary = super.calculateAnnualSalary();
+        const bonusAmount = baseSalary * bonus;
+        console.log(`Annual Salary with bonus: ${bonusAmount + baseSalary}`);
     }
 }
 
-const tri = new Triangle(8, 5);
-tri.calculateArea();
-
-
-const hugis = new Shape();
-hugis.calculateArea();
+const kyoManager = new Manager("Eustaquio Galano II", 50000, "IT");
+kyoManager.calculateAnnualSalary();
+console.log(kyoManager);
