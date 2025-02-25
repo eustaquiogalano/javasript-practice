@@ -618,39 +618,75 @@
 
 
 // 4. Back account class with deposit and withdrawal
-class BackAccount {
-    constructor(accNumber, balance) {
-        this.accNumber = accNumber;
-        this.balance = balance;
-    }
+// class BackAccount {
+//     constructor(accNumber, balance) {
+//         this.accNumber = accNumber;
+//         this.balance = balance;
+//     }
 
-    deposit(amount) {
-        this.balance += amount;
-    }
+//     deposit(amount) {
+//         this.balance += amount;
+//     }
 
-    withdraw(amount) {
-        this.balance -= amount;
-    }
+//     withdraw(amount) {
+//         this.balance -= amount;
+//     }
 
-    getBalance() {
-        console.log(this.balance);
+//     getBalance() {
+//         console.log(this.balance);
+//     }
+// }
+
+// const myAccount = new BackAccount("Eustaquio", 0);
+// console.log(myAccount);
+
+// myAccount.deposit(1_000_000);
+// myAccount.getBalance();
+
+// myAccount.withdraw(120_000_000);
+// myAccount.getBalance();
+
+// console.log(myAccount);
+
+
+// 5. Shape, Circle, and Triangle Classes with Area Calculation
+
+class Shape {
+    calculateArea() {
+        throw new Error("Must be overridden in subclass. Wag dito sa iba nalang ");
     }
 }
 
-const myAccount = new BackAccount("Eustaquio", 0);
-console.log(myAccount);
+class Circle extends Shape {
+    constructor(radius) {
+        super();
+        this.radius = radius;
+    }
 
-myAccount.deposit(1_000_000);
-myAccount.getBalance();
+    calculateArea() {
+        console.log(`Area: ${Math.PI * Math.pow(this.radius,2)}`);
+    }
+}
 
-myAccount.withdraw(120_000_000);
-myAccount.getBalance();
-
-console.log(myAccount);
-
-
-
-
-
+const smallC = new Circle(5);
+smallC.calculateArea();
 
 
+class Triangle extends Shape {
+    constructor(base, height) {
+        super();
+        this.base = base;
+        this.height = height;
+    }
+
+    calculateArea() {
+        console.log(`Area: ${1/2 * this.base * this.height}`);
+    }
+}
+
+const tri = new Triangle(8, 5);
+tri.calculateArea();
+
+
+const hugis = new Shape();
+hugis.calculateArea();
