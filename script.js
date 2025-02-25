@@ -537,29 +537,52 @@
 // w3source exercise practice on Class
 
 // 1. Person class with details
-class Person {
-    constructor(name, age, country) {
-        this.name = name;
-        this.age = age;
-        this.country = country;
+// class Person {
+//     constructor(name, age, country) {
+//         this.name = name;
+//         this.age = age;
+//         this.country = country;
+//     }
+
+//     personDetails() {
+//         return `
+// Details
+// Name: ${this.name}
+// Age: ${this.age}
+// Country: ${this.country}
+//                 `;
+//     }
+// }
+
+// const mike = new Person("Mike", 23, "Philippines");
+// const rui = new Person("Rui", 29, "Japan");
+
+
+// console.log(mike.personDetails());
+// console.log(rui.personDetails());
+
+// 2. Rectangle class with area and parameter
+
+class Rectangle {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
     }
 
-    personDetails() {
-        return `
-Details
-Name: ${this.name}
-Age: ${this.age}
-Country: ${this.country}
-                `;
+    calculateArea() {
+        return `Area: ${this.height * this.width}`;
+    }
+
+    calculatePerimeter() {
+        return `Perimeter: ${(this.height + this.width) * 2}`;
     }
 }
 
-const mike = new Person("Mike", 23, "Philippines");
-const rui = new Person("Rui", 29, "Japan");
+const sampleRectangle = new Rectangle(10, 16);
 
+console.log( sampleRectangle.calculateArea() );
+console.log( sampleRectangle.calculatePerimeter() );
 
-console.log(mike.personDetails());
-console.log(rui.personDetails());
 
 
 
