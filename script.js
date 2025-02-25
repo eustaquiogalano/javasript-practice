@@ -617,6 +617,39 @@
 // console.log(nissanGTR.getDetails());
 
 
+// 4. Back account class with deposit and withdrawal
+class BackAccount {
+    constructor(accNumber, balance) {
+        this.accNumber = accNumber;
+        this.balance = balance;
+    }
+
+    deposit(amount) {
+        this.balance += amount;
+    }
+
+    withdraw(amount) {
+        this.balance -= amount;
+    }
+
+    getBalance() {
+        console.log(this.balance);
+    }
+}
+
+const myAccount = new BackAccount("Eustaquio", 0);
+console.log(myAccount);
+
+myAccount.deposit(1_000_000);
+myAccount.getBalance();
+
+myAccount.withdraw(120_000_000);
+myAccount.getBalance();
+
+console.log(myAccount);
+
+
+
 
 
 
