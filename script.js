@@ -563,26 +563,58 @@
 
 // 2. Rectangle class with area and parameter
 
-class Rectangle {
-    constructor(width, height) {
-        this.width = width;
-        this.height = height;
-    }
+// class Rectangle {
+//     constructor(width, height) {
+//         this.width = width;
+//         this.height = height;
+//     }
 
-    calculateArea() {
-        return `Area: ${this.height * this.width}`;
-    }
+//     calculateArea() {
+//         return `Area: ${this.height * this.width}`;
+//     }
 
-    calculatePerimeter() {
-        return `Perimeter: ${(this.height + this.width) * 2}`;
-    }
-}
+//     calculatePerimeter() {
+//         return `Perimeter: ${(this.height + this.width) * 2}`;
+//     }
+// }
 
-const sampleRectangle = new Rectangle(10, 16);
+// const sampleRectangle = new Rectangle(10, 16);
 
-console.log( sampleRectangle.calculateArea() );
-console.log( sampleRectangle.calculatePerimeter() );
+// console.log( sampleRectangle.calculateArea() );
+// console.log( sampleRectangle.calculatePerimeter() );
 
+// 3. Vehicle and Car Classes with inheritance
+
+// class Vehicle {
+//     constructor(brand, model, year) {
+//         this.brand = brand;
+//         this.model = model;
+//         this.year = year;
+//     }
+
+//     getDetails() {
+//         console.log(`Brand: ${this.brand}`);
+//         console.log(`Model: ${this.model}`);
+//         console.log(`Year: ${this.year}`);
+//     }
+// }
+
+// class Car extends Vehicle{
+//     constructor(brand, model, year, numberOfDoors) {
+//         super(brand, model, year);
+//         this.numberOfDoors = numberOfDoors;
+//     }
+
+//     getDetails() {
+//         super.getDetails();
+//         console.log(`Doors: ${this.numberOfDoors}`);
+        
+//     }
+// }
+
+// const nissanGTR = new Car("Nissan", "GTR", 2023, 2);
+
+// console.log(nissanGTR.getDetails());
 
 
 
