@@ -810,4 +810,35 @@
 // banKyo.addBranch("Surigao City");
 // console.log(banKyo);
 
+// 10. Product and PersonalCareProduct Classes with Warranty
 
+class Product {
+    constructor(productID, name, price) {
+        this.productID = productID;
+        this.name = name;
+        this.price = price;
+    }
+
+    calculatePrice(quantity) {
+        console.log(quantity * this.price);
+        return quantity * this.price;
+    }
+}
+
+class PersonalCareProduct extends Product {
+    constructor(productID, name, price, warranty) {
+        super(productID, name, price);
+        this.warranty = warranty;
+    }
+
+    calculatePrice(quantity) {
+        const price = super.calculatePrice(quantity);
+        console.log(this.warranty);
+        
+    }
+}
+
+const product = new PersonalCareProduct(3425, "Salicylic Patch", 40.99, 2026);
+console.log(product);
+
+product.calculatePrice(3);
