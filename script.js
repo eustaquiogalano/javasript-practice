@@ -845,47 +845,85 @@
 
 // 11. BankAccount Class with Transfers Between Accounts
 
-class BankAccount {
-    constructor(accountNumber, accountHolderName, balance) {
-        this.accountNumber = accountNumber;
-        this.accountHolderName = accountHolderName;
-        this.balance = balance;
-    }
+// class BankAccount {
+//     constructor(accountNumber, accountHolderName, balance) {
+//         this.accountNumber = accountNumber;
+//         this.accountHolderName = accountHolderName;
+//         this.balance = balance;
+//     }
 
-    deposit(amount) {
-        this.balance += amount;
-        console.log(`${this.accountHolderName}: ${this.balance}`);
+//     deposit(amount) {
+//         this.balance += amount;
+//         console.log(`${this.accountHolderName}: ${this.balance}`);
         
-    }
+//     }
 
-    withdraw(amount) {
-        this.balance -= amount;
-        console.log(`${this.accountHolderName}: ${this.balance}`);
-    }
+//     withdraw(amount) {
+//         this.balance -= amount;
+//         console.log(`${this.accountHolderName}: ${this.balance}`);
+//     }
 
-    transferMoney(accountNumber, amount) {
-        this.balance -= amount;
-        console.log(`${this.accountHolderName}: ${this.balance}`);
-        console.log(`${amount} transferred to ${accountNumber.accountHolderName}`);
+//     transferMoney(accountNumber, amount) {
+//         this.balance -= amount;
+//         console.log(`${this.accountHolderName}: ${this.balance}`);
+//         console.log(`${amount} transferred to ${accountNumber.accountHolderName}`);
         
-        accountNumber.deposit(amount);
+//         accountNumber.deposit(amount);
+//     }
+// }
+
+// const galano = new BankAccount(3425, "Eustaquio Galano II", 0);
+// console.log(galano);
+
+// const elon = new BankAccount(3426, "Elon Musk", 0);
+// console.log(elon);
+
+// galano.deposit(20_000);
+// galano.withdraw(10_000);
+// galano.transferMoney(elon, 5_000);
+
+// console.log(galano);
+// console.log(elon);
+
+// elon.transferMoney(galano, 5_000);
+
+// 12. University Class with Department Management
+
+class University {
+    constructor(name) {
+        this.name = name;
+        this.departments = [];
+    }
+
+    displayDepartments() {
+        console.log(this.departments);
+    }
+
+    addDepartment(departmentName) {
+        this.departments.push(departmentName);
+        this.displayDepartments();
+    }
+
+    removeDepartment(departmentName) {
+        const index = this.departments.indexOf(departmentName);
+        console.log(index);
+        
+        this.departments.splice(index, 1);
+        this.displayDepartments();
     }
 }
 
-const galano = new BankAccount(3425, "Eustaquio Galano II", 0);
-console.log(galano);
+const kyu = new University("Kyuniversity", []);
+console.log(kyu);
 
-const elon = new BankAccount(3426, "Elon Musk", 0);
-console.log(elon);
+kyu.addDepartment("IT");
+kyu.addDepartment("Security");
+kyu.addDepartment('Maintenance');
+kyu.addDepartment("Admission");
 
-galano.deposit(20_000);
-galano.withdraw(10_000);
-galano.transferMoney(elon, 5_000);
+kyu.removeDepartment("Maintenance");
+kyu.removeDepartment("IT");
 
-console.log(galano);
-console.log(elon);
-
-elon.transferMoney(galano, 5_000);
 
 
 
