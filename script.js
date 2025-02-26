@@ -757,29 +757,57 @@
 // theBook.displayDetails();
 
 // 8. DOg class
-class Animal {
-    constructor(species, sound) {
-        this.species = species;
-        this.sound = sound;
-    }
+// class Animal {
+//     constructor(species, sound) {
+//         this.species = species;
+//         this.sound = sound;
+//     }
 
-    makeSound() {
-        console.log(`${this.sound}`);
-    }
-}
+//     makeSound() {
+//         console.log(`${this.sound}`);
+//     }
+// }
 
-class Dog extends Animal {
-    constructor(species, sound, color) {
-        super(species, sound);
-        this.color = color;
-    }
+// class Dog extends Animal {
+//     constructor(species, sound, color) {
+//         super(species, sound);
+//         this.color = color;
+//     }
 
-    makeSound() {
-        super.makeSound();
-        console.log(`${this.color} dog`);
+//     makeSound() {
+//         super.makeSound();
+//         console.log(`${this.color} dog`);
         
-    }
-}
+//     }
+// }
 
-const bong = new Dog("Dog", "ARF! ARF!", "Brown");
-bong.makeSound();
+// const bong = new Dog("Dog", "ARF! ARF!", "Brown");
+// bong.makeSound();
+
+// 9. Bank Class with Branch Management
+// class Bank {
+//     constructor(name, branch) {
+//         this.name = name;
+//         this.branch = branch;
+//     }
+
+//     addBranch(location) {
+//         this.branch.push(location);
+//     }
+
+//     removeBranch(location) {
+//         const index = this.branch.indexOf(location);
+//         this.branch.splice(index, 1);
+//     }
+// }
+
+// const banKyo = new Bank ("Bankyo", ["Quezon City", "Bulacan", "Bataan"]);
+// console.log(banKyo);
+
+// banKyo.removeBranch("Bulacan");
+// console.log(banKyo);
+
+// banKyo.addBranch("Surigao City");
+// console.log(banKyo);
+
+
