@@ -889,6 +889,13 @@
 
 // 12. University Class with Department Management
 
+const smp = "sample string";
+
+const obj = {
+    name: "walter",
+    age: 90
+};
+
 class University {
     constructor(name) {
         this.name = name;
@@ -905,24 +912,13 @@ class University {
     }
 
     removeDepartment(departmentName) {
-        const index = this.departments.indexOf(departmentName);
-        console.log(index);
-        
+        const index = this.departments.indexOf(departmentName);        
         this.departments.splice(index, 1);
         this.displayDepartments();
     }
 }
 
-const kyu = new University("Kyuniversity", []);
-console.log(kyu);
-
-kyu.addDepartment("IT");
-kyu.addDepartment("Security");
-kyu.addDepartment('Maintenance');
-kyu.addDepartment("Admission");
-
-kyu.removeDepartment("Maintenance");
-kyu.removeDepartment("IT");
+export { University, obj, smp };
 
 
 
