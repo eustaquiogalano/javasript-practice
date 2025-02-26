@@ -812,33 +812,80 @@
 
 // 10. Product and PersonalCareProduct Classes with Warranty
 
-class Product {
-    constructor(productID, name, price) {
-        this.productID = productID;
-        this.name = name;
-        this.price = price;
+// class Product {
+//     constructor(productID, name, price) {
+//         this.productID = productID;
+//         this.name = name;
+//         this.price = price;
+//     }
+
+//     calculatePrice(quantity) {
+//         console.log(quantity * this.price);
+//         return quantity * this.price;
+//     }
+// }
+
+// class PersonalCareProduct extends Product {
+//     constructor(productID, name, price, warranty) {
+//         super(productID, name, price);
+//         this.warranty = warranty;
+//     }
+
+//     calculatePrice(quantity) {
+//         const price = super.calculatePrice(quantity);
+//         console.log(this.warranty);
+        
+//     }
+// }
+
+// const product = new PersonalCareProduct(3425, "Salicylic Patch", 40.99, 2026);
+// console.log(product);
+
+// product.calculatePrice(3);
+
+// 11. BankAccount Class with Transfers Between Accounts
+
+class BankAccount {
+    constructor(accountNumber, accountHolderName, balance) {
+        this.accountNumber = accountNumber;
+        this.accountHolderName = accountHolderName;
+        this.balance = balance;
     }
 
-    calculatePrice(quantity) {
-        console.log(quantity * this.price);
-        return quantity * this.price;
-    }
-}
-
-class PersonalCareProduct extends Product {
-    constructor(productID, name, price, warranty) {
-        super(productID, name, price);
-        this.warranty = warranty;
-    }
-
-    calculatePrice(quantity) {
-        const price = super.calculatePrice(quantity);
-        console.log(this.warranty);
+    deposit(amount) {
+        this.balance += amount;
+        console.log(`${this.accountHolderName}: ${this.balance}`);
         
     }
+
+    withdraw(amount) {
+        this.balance -= amount;
+        console.log(`${this.accountHolderName}: ${this.balance}`);
+    }
+
+    transferMoney(accountNumber, amount) {
+        this.balance -= amount;
+        console.log(`${this.accountHolderName}: ${this.balance}`);
+        console.log(`${amount} transferred to ${accountNumber.accountHolderName}`);
+        
+        accountNumber.deposit(amount);
+    }
 }
 
-const product = new PersonalCareProduct(3425, "Salicylic Patch", 40.99, 2026);
-console.log(product);
+const galano = new BankAccount(3425, "Eustaquio Galano II", 0);
+console.log(galano);
 
-product.calculatePrice(3);
+const elon = new BankAccount(3426, "Elon Musk", 0);
+console.log(elon);
+
+galano.deposit(20_000);
+galano.withdraw(10_000);
+galano.transferMoney(elon, 5_000);
+
+console.log(galano);
+console.log(elon);
+
+elon.transferMoney(galano, 5_000);
+
+
+
