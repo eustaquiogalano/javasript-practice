@@ -7,7 +7,7 @@ async function generate() {
     console.log(superHeroes);
 
     generateHeader(superHeroes);
-    // generateMain(superHeroes);
+    generateMain(superHeroes);
 }
 
 function generateHeader(obj) {
@@ -22,6 +22,42 @@ function generateHeader(obj) {
     quickInfo.textContent = `Home: ${obj.homeTown} Formed: ${obj.formed}`;
 
     header.appendChild(quickInfo);
+}
+
+function generateMain(obj) {
+    const main = document.querySelector('main');
+
+    const heroes = obj.members;
+
+    for (hero of heroes) {
+        const hArticle = document.createElement('article');
+        const hHeroName = document.createElement('h2');
+        const hSecretIdentity = document.createElement('p');
+        const hAge = document.createElement('p');
+        const hSuperpowers = document.createElement('p');
+        const hSuperpowersList = document.createElement('ul');
+        
+        hHeroName.textContent = hero.name;
+        hSecretIdentity.textContent = `Secret Identity: ${hero.secretIdentity}`;
+        hAge.textContent = `Age: ${hero.age}`;
+        hSuperpowers.textContent = "Superpowers:";
+        
+        const powers = hero.powers;
+
+        for (power of powers) {
+            const listItem = document.createElement('li');
+            listItem.textContent = power;
+            hSuperpowersList.appendChild(listItem);
+        }
+
+        hArticle.appendChild(hHeroName);
+        hArticle.appendChild(hSecretIdentity);
+        hArticle.appendChild(hAge);
+        hArticle.appendChild(hSuperpowers);
+        hArticle.appendChild(hSuperpowersList);
+
+        main.appendChild(hArticle); 
+    }
 }
 
 generate();
