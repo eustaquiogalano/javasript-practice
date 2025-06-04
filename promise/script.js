@@ -6,20 +6,26 @@
 
 function walkDog() {
   return new Promise((resolve, reject) => {
-    const dogWalked = false;
-
-    if (dogWalked) {
-      resolve("Dog happy!");
-    } else {
-      reject("Dog sad");
-    }
+    setTimeout(() => {
+      const dogWalked = true;
+      if (dogWalked === "vague") {
+        resolve("Walk him now!");
+      } else if (dogWalked) {
+        resolve("Dog already happy!");
+      } else {
+        reject("Dog sad :(");
+      }
+    }, 3000);
   });
 }
 
-const human = walkDog();
-human
+walkDog()
   .then((message) => {
     console.log(message);
+    return message;
+  })
+  .then((message) => {
+    console.log("walk the dog everyday " + message);
   })
   .catch((message) => {
     console.error(Error(message));
