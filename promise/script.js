@@ -7,7 +7,7 @@
 function walkDog() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const dogWalked = true;
+      const dogWalked = false;
       if (dogWalked === "vague") {
         resolve("Walk him now!");
       } else if (dogWalked) {
@@ -29,4 +29,7 @@ walkDog()
   })
   .catch((message) => {
     console.error(Error(message));
+  })
+  .finally(() => {
+    console.log("Done!");
   });
