@@ -18,27 +18,31 @@
         // get a reference of the img tag
         const img = document.querySelector("img");
 
-        // fetch the gif the user wants
-        // using also the string that
-        // the user entered in the text input
-        const response = await fetch(
-          `https://api.giphy.com/v1/gifs/translate?api_key=OWwbypVNf9Q9KhLNJ7Iq56qbKB7c7BSM&s=${gifName}`,
-          { mode: "cors" }
-        );
+        try {
+          // fetch the gif the user wants
+          // using also the string that
+          // the user entered in the text input
+          const response = await fetch(
+            `https://api.giphy.com/v1/gifs/translate?api_key=OWwbypVNf9Q9KhLNJ7Iq56qbKB7c7BSM&s=${gifName}`,
+            { mode: "cors" }
+          );
 
-        // for debugging/practice purpose
-        console.log(response);
+          // for debugging/practice purpose
+          console.log(response);
 
-        // convert to json file the fetched data
-        const result = await response.json();
+          // convert to json file the fetched data
+          const result = await response.json();
 
-        // for debugging/practice purpose
-        console.log(result);
+          // for debugging/practice purpose
+          console.log(result);
 
-        // get the url of the searched gif
-        // and make it the value of the src attribute
-        // to display the gif
-        img.src = result.data.images.original.url;
+          // get the url of the searched gif
+          // and make it the value of the src attribute
+          // to display the gif
+          img.src = result.data.images.original.url;
+        } catch (error) {
+          throw new Error(`catch block: `, error);
+        }
       }
 
       // get a reference of the button and the input
