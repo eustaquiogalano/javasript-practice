@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function doubleTheNumber(num) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(num * 2);
+          }, 2000);
+        });
+      }
+
+      async function addAll() {
+        try {
+          const first = await doubleTheNumber(1);
+          const second = await doubleTheNumber(2);
+          const third = await doubleTheNumber(3);
+
+          return first + second + third;
+        } catch (error) {
+          throw new Error(`The error: ` + error);
+        }
+      }
+
+      addAll().then((result) => {
+        console.log(result);
+      });
+    </script>
+  </body>
+</html>
