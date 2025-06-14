@@ -41,36 +41,55 @@
       // console.log(allSum);
 
       // Linked list
-      let lList = {
-        value: "First",
-        next: {
-          value: "Second",
-          next: {
-            value: "Third",
-            next: null,
-          },
-        },
-      };
+      // let lList = {
+      //   value: "First",
+      //   next: {
+      //     value: "Second",
+      //     next: {
+      //       value: "Third",
+      //       next: null,
+      //     },
+      //   },
+      // };
 
-      // add fourth nested object
-      lList.next.next.next = {
-        value: "fourth",
-      };
+      // // add fourth nested object
+      // lList.next.next.next = {
+      //   value: "fourth",
+      // };
 
-      let secondDownTolast = lList.next;
+      // let secondDownTolast = lList.next;
 
-      lList.next = {
-        value: "deleted",
-      };
+      // lList.next = {
+      //   value: "deleted",
+      // };
 
-      console.log(lList);
-      console.log(secondDownTolast);
-      console.log(lList);
+      // console.log(lList);
+      // console.log(secondDownTolast);
+      // console.log(lList   );
 
-      lList.next = secondDownTolast;
+      // lList.next = secondDownTolast;
 
-      console.log(`Combined:`);
-      console.log(lList);
+      // console.log(`Combined:`);
+      // console.log(lList);
+
+      // for loop variant
+      // function sumToForLoop(n) {
+      //   let sum = 0;
+      //   for (; n > 0; n--) {
+      //     sum += n;
+      //   }
+      //   console.log(sum);
+      // }
+
+      function sumToRecursion(n) {
+        if (n === 1) {
+          return 1;
+        } else {
+          return (n += sumToRecursion(n - 1));
+        }
+      }
+
+      console.log(sumToRecursion(100));
     </script>
   </body>
 </html>
