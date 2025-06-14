@@ -7,38 +7,70 @@
   </head>
   <body>
     <script>
-      let company = {
-        // the same object, compressed for brevity
-        sales: [
-          { name: "John", salary: 1000 },
-          { name: "Alice", salary: 1600 },
-        ],
-        development: {
-          sites: [
-            { name: "Peter", salary: 2000 },
-            { name: "Alex", salary: 1800 },
-          ],
-          internals: [{ name: "Jack", salary: 1300 }],
+      // let company = {
+      //   // the same object, compressed for brevity
+      //   sales: [
+      //     { name: "John", salary: 1000 },
+      //     { name: "Alice", salary: 1600 },
+      //   ],
+      //   development: {
+      //     sites: [
+      //       { name: "Peter", salary: 2000 },
+      //       { name: "Alex", salary: 1800 },
+      //     ],
+      //     internals: [{ name: "Jack", salary: 1300 }],
+      //   },
+      // };
+
+      // function sumAllSalary(department) {
+      //   if (Array.isArray(department)) {
+      //     // check
+      //     return department.reduce((previous, current) => {
+      //       return previous + current.salary;
+      //     }, 0);
+      //   } else {
+      //     let sum = 0;
+      //     for (let sub of Object.values(department)) {
+      //       sum += sumAllSalary(sub);
+      //     }
+      //     return sum;
+      //   }
+      // }
+
+      // const allSum = sumAllSalary(company);
+      // console.log(allSum);
+
+      // Linked list
+      let lList = {
+        value: "First",
+        next: {
+          value: "Second",
+          next: {
+            value: "Third",
+            next: null,
+          },
         },
       };
 
-      function sumAllSalary(department) {
-        if (Array.isArray(department)) {
-          // check
-          return department.reduce((previous, current) => {
-            return previous + current.salary;
-          }, 0);
-        } else {
-          let sum = 0;
-          for (let sub of Object.values(department)) {
-            sum += sumAllSalary(sub);
-          }
-          return sum;
-        }
-      }
+      // add fourth nested object
+      lList.next.next.next = {
+        value: "fourth",
+      };
 
-      const allSum = sumAllSalary(company);
-      console.log(allSum);
+      let secondDownTolast = lList.next;
+
+      lList.next = {
+        value: "deleted",
+      };
+
+      console.log(lList);
+      console.log(secondDownTolast);
+      console.log(lList);
+
+      lList.next = secondDownTolast;
+
+      console.log(`Combined:`);
+      console.log(lList);
     </script>
   </body>
 </html>
