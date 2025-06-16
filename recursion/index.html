@@ -81,15 +81,77 @@
       //   console.log(sum);
       // }
 
-      function sumToRecursion(n) {
-        if (n === 1) {
-          return 1;
-        } else {
-          return (n += sumToRecursion(n - 1));
+      // function sumToRecursion(n) {
+      //   if (n === 1) {
+      //     return 1;
+      //   } else {
+      //     return (n += sumToRecursion(n - 1));
+      //   }
+      // }
+
+      // console.log(sumToRecursion(100));
+
+      // function sumRange(n) {
+      //   if (n === 1) {
+      //     return 1;
+      //   } else {
+      //     return n + sumRange(n - 1);
+      //   }
+      // }
+
+      // console.log(sumRange(3));
+
+      // function power(base, exponent) {
+      //   if (exponent === 0) return 1;
+
+      //   if (exponent === 1) {
+      //     return base;
+      //   } else {
+      //     return base * power(base, exponent - 1);
+      //   }
+      // }
+
+      // console.log(power(2, 3));
+
+      // function factorial(n) {
+      //   if (n === 1) {
+      //     return 1;
+      //   } else {
+      //     return n * factorial(n - 1);
+      //   }
+      // }
+
+      // console.log(factorial(5));
+
+      function contains(obj, value) {
+        for (let key in obj) {
+          if (typeof obj[key] === "object") {
+            return contains(obj[key], value);
+          }
+
+          if (obj[key] === value) {
+            return true;
+          }
         }
+        return false;
       }
 
-      console.log(sumToRecursion(100));
+      let nestedObject = {
+        data: {
+          info: {
+            stuff: {
+              thing: {
+                moreStuff: {
+                  magicNumber: 44,
+                  something: "foo2",
+                },
+              },
+            },
+          },
+        },
+      };
+
+      console.log(contains(nestedObject, 44));
     </script>
   </body>
 </html>
