@@ -123,35 +123,81 @@
 
       // console.log(factorial(5));
 
-      function contains(obj, value) {
-        for (let key in obj) {
-          if (typeof obj[key] === "object") {
-            return contains(obj[key], value);
-          }
+      // function contains(obj, value) {
+      //   for (let key in obj) {
+      //     if (typeof obj[key] === "object") {
+      //       return contains(obj[key], value);
+      //     }
 
-          if (obj[key] === value) {
-            return true;
-          }
+      //     if (obj[key] === value) {
+      //       return true;
+      //     }
+      //   }
+      //   return false;
+      // }
+
+      // let nestedObject = {
+      //   data: {
+      //     info: {
+      //       stuff: {
+      //         thing: {
+      //           moreStuff: {
+      //             magicNumber: 44,
+      //             something: "foo2",
+      //           },
+      //         },
+      //       },
+      //     },
+      //   },
+      // };
+
+      // console.log(contains(nestedObject, 44));
+
+      // let arr = [];
+
+      // function fibs(n) {
+      //   if (n < 2) {
+      //     arr.push(n);
+      //     return n;
+      //   } else {
+      //     let subT = fibs(n - 1) + fibs(n - 2);
+      //     arr.push(subT);
+      //     return subT;
+      //   }
+      // }
+
+      // console.log(arr);
+
+      // console.log(fibs(7));
+
+      function fibs(n) {
+        if (n <= 0) {
+          return [];
         }
-        return false;
+
+        if (n === 1) {
+          return [0];
+        }
+
+        if (n === 2) {
+          return [0, 1];
+        }
+
+        // keep invoking fibs until n becomes 0 or 1 or 2
+        // to return the array containing the initial values
+        const subFib = fibs(n - 1);
+
+        // get the last and second to the last value
+        // from the array and add them
+        // to get the next fibonacci value
+        const nextVal = subFib[subFib.length - 1] + subFib[subFib.length - 2];
+
+        // add the nextVal to the current running array
+        // and return the array
+        return [...subFib, nextVal];
       }
 
-      let nestedObject = {
-        data: {
-          info: {
-            stuff: {
-              thing: {
-                moreStuff: {
-                  magicNumber: 44,
-                  something: "foo2",
-                },
-              },
-            },
-          },
-        },
-      };
-
-      console.log(contains(nestedObject, 44));
+      console.log(fibs(7));
     </script>
   </body>
 </html>
