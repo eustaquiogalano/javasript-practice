@@ -170,34 +170,34 @@
 
       // console.log(fibs(7));
 
-      function fibs(n) {
-        if (n <= 0) {
-          return [];
-        }
+      // function fibs(n) {
+      //   if (n <= 0) {
+      //     return [];
+      //   }
 
-        if (n === 1) {
-          return [0];
-        }
+      //   if (n === 1) {
+      //     return [0];
+      //   }
 
-        if (n === 2) {
-          return [0, 1];
-        }
+      //   if (n === 2) {
+      //     return [0, 1];
+      //   }
 
-        // keep invoking fibs until n becomes 0 or 1 or 2
-        // to return the array containing the initial values
-        const subFib = fibs(n - 1);
+      //   // keep invoking fibs until n becomes 0 or 1 or 2
+      //   // to return the array containing the initial values
+      //   const subFib = fibs(n - 1);
 
-        // get the last and second to the last value
-        // from the array and add them
-        // to get the next fibonacci value
-        const nextVal = subFib[subFib.length - 1] + subFib[subFib.length - 2];
+      //   // get the last and second to the last value
+      //   // from the array and add them
+      //   // to get the next fibonacci value
+      //   const nextVal = subFib[subFib.length - 1] + subFib[subFib.length - 2];
 
-        // add the nextVal to the current running array
-        // and return the array
-        return [...subFib, nextVal];
-      }
+      //   // add the nextVal to the current running array
+      //   // and return the array
+      //   return [...subFib, nextVal];
+      // }
 
-      // console.log(fibs(7));
+      // // console.log(fibs(7));
 
       function loopFib(n) {
         arr = [0, 1];
@@ -206,9 +206,37 @@
           arr.push(nextVal);
         }
         console.log(arr);
+        return arr;
       }
 
-      loopFib(100);
+      function mergeSorter(array) {
+        if (array.length === 1) {
+          console.log(array);
+
+          return array;
+        }
+
+        const mid = Math.ceil(array.length / 2);
+        const left = mergeSorter(array.slice(0, mid));
+        const right = mergeSorter(array.slice(mid));
+
+        let l = 0;
+        let r = 0;
+        let result = [];
+
+        while (l < left.length && r < right.length) {
+          result.push(left[l] < right[r] ? left[l++] : right[r++]);
+        }
+
+        console.log(result.concat(left.slice(l).concat(right.slice(r))));
+
+        return result.concat(left.slice(l).concat(right.slice(r)));
+      }
+
+      let unsorted = [6, 1, 4, 7, 5];
+      console.log(unsorted);
+
+      console.log(mergeSorter(unsorted));
     </script>
   </body>
 </html>
