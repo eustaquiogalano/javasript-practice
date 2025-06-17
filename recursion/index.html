@@ -197,7 +197,18 @@
         return [...subFib, nextVal];
       }
 
-      console.log(fibs(7));
+      // console.log(fibs(7));
+
+      function loopFib(n) {
+        arr = [0, 1];
+        for (let i = 3; n >= i; n--) {
+          const nextVal = arr[arr.length - 1] + arr[arr.length - 2];
+          arr.push(nextVal);
+        }
+        console.log(arr);
+      }
+
+      loopFib(100);
     </script>
   </body>
 </html>
