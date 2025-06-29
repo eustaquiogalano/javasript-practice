@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function node(value = null, nextNode = null) {
+        return {
+          value,
+          nextNode,
+        };
+      }
+
+      function linkedList() {
+        // the head / root of the linked list
+        let head = null;
+
+        // method to add node at the
+        // end of the list
+        function append(value) {
+          // put in a variable the return object
+          // of the node function
+          const initialNode = node(value);
+
+          // check the head property
+          if (!this.head) {
+            // if it has no value yet
+            // set the initialNode as its value
+            this.head = initialNode;
+            return;
+          }
+
+          // if head has already a value do this
+
+          // use a variable to
+          // substitute the head / root
+          let substituteHead = this.head;
+
+          // check wether the nextNode property
+          // has a value
+          while (substituteHead.nextNode) {
+            // if nextNode property has a value
+            // enter that nextNode property
+            // until you the loop reaches the
+            // end of the list which has a null value
+            // and exixts the loop
+            substituteHead = substituteHead.nextNode;
+          }
+
+          // the current nextNode property
+          // will hold the initialNode variable value
+          substituteHead.nextNode = initialNode;
+        }
+
+        // method to add node at the
+        // front of the list
+        function prepend(value) {
+          // create node and use the value
+          // as the first argument
+          // use the head/root as the
+          // second argument
+          const substituteHead = node(value, this.head);
+
+          // replace the value of the
+          // head/root using the substituteHead
+          // variable that you created earlier
+          this.head = substituteHead;
+        }
+
+        // method to get the
+        // current size of the list
+        function size() {
+          let size = 0;
+
+          // use variable to copy the head
+          let current = this.head;
+
+          // if current has a value/truthy
+          while (current) {
+            console.log(current);
+
+            // increment size by 1
+            size++;
+
+            // set current variable as the next node
+            // for the while to check again
+            current = current.nextNode;
+          }
+
+          // then simply return the size
+          return size;
+        }
+
+        function headList() {
+          return this.head;
+        }
+
+        function tailList() {
+          // use a variable to copy head
+          let current = this.head;
+
+          // loop through the list
+          while (current) {
+            // check the nextNode property of each node
+            if (!current.nextNode) {
+              // if nextNode is null
+              // return the current node
+              return current;
+            }
+            // if not keep going through each node
+            current = current.nextNode;
+          }
+        }
+
+        return {
+          head,
+          append,
+          prepend,
+          size,
+          headList,
+          tailList,
+        };
+      }
+
+      let newLL = linkedList();
+
+      console.log(newLL);
+
+      // add to end
+      newLL.append("John");
+      newLL.append("Mark");
+      newLL.append("Joey");
+      newLL.append("Zoe");
+      newLL.append("Methusela");
+
+      // add to front
+      newLL.prepend("Shine");
+
+      // get list size
+      console.log(newLL.size());
+
+      // get first node
+      console.log(newLL.headList());
+
+      // get last node
+      console.log(newLL.tailList());
+
+      // get the full list
+      console.log(newLL);
+    </script>
+  </body>
+</html>
