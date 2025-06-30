@@ -140,6 +140,46 @@
           }
         }
 
+        // delete the last node
+        function pop() {
+          // check if the head/root already has no value
+          // then just return
+          if (!this.head) return;
+
+          // if not it means it has a node then
+          // another check if that node
+          // is the last node
+          if (!this.head.nextNode) {
+            // if it is then delete it
+            // and end the function
+            this.head = null;
+            return;
+          }
+
+          // again if not
+          // it means it has 2 or more nodes so
+          // we need to dig deep
+
+          // get a copy of the head/root
+          let current = this.head;
+
+          // dig deep through the list
+          // check each node
+          while (current.nextNode) {
+            // check current node if it is the last node
+            if (!current.nextNode.nextNode) {
+              // if it is delete it
+              // then end the function
+              current.nextNode = null;
+              return;
+            }
+
+            // if not continue digging through the list
+            // until you find the last node
+            current = current.nextNode;
+          }
+        }
+
         return {
           head,
           append,
@@ -148,6 +188,7 @@
           headList,
           tailList,
           at,
+          pop,
         };
       }
 
@@ -177,10 +218,15 @@
       console.log(newLL.tailList());
 
       // get node using index
-      console.log(newLL.at(0));
+      console.log(newLL.at(4));
+
+      // delete the last node
+      newLL.pop();
 
       // get the full list
       console.log(newLL);
+
+      console.log(newLL.tailList());
     </script>
   </body>
 </html>
