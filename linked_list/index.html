@@ -180,6 +180,29 @@
           }
         }
 
+        // method to
+        // check if the given value
+        // exists in the list
+        function contains(value) {
+          // get a copy of head/root
+          let current = this.head;
+
+          // lopp through the list
+          while (current) {
+            // check each value if match
+            if (current.value === value) {
+              // if match end return true
+              return true;
+            }
+
+            // if not continue the loop
+            current = current.nextNode;
+          }
+
+          // if no match found return false
+          return false;
+        }
+
         return {
           head,
           append,
@@ -189,6 +212,7 @@
           tailList,
           at,
           pop,
+          contains,
         };
       }
 
@@ -225,6 +249,11 @@
 
       // get the full list
       console.log(newLL);
+
+      // check the given value if it exist in the list
+      console.log(newLL.contains("Kobe"));
+      console.log(newLL.contains(4));
+      console.log(newLL.contains("Methusela"));
 
       console.log(newLL.tailList());
     </script>
