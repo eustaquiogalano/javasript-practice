@@ -115,6 +115,31 @@
           }
         }
 
+        // method to get a node
+        // using its index
+        function at(index) {
+          // get a copy of head/root
+          let current = this.head;
+
+          // if current has a value/truthy
+          while (current) {
+            // check also if the index is 0
+            // which means you have arrived
+            // at your destination
+            if (index === 0) {
+              // return the current node
+              return current;
+            }
+
+            // if not decrement by 1 to eventually
+            // reach the target node
+            index--;
+
+            // then go to the next node
+            current = current.nextNode;
+          }
+        }
+
         return {
           head,
           append,
@@ -122,6 +147,7 @@
           size,
           headList,
           tailList,
+          at,
         };
       }
 
@@ -138,6 +164,8 @@
 
       // add to front
       newLL.prepend("Shine");
+      newLL.prepend("Kobe");
+      newLL.prepend("David");
 
       // get list size
       console.log(newLL.size());
@@ -147,6 +175,9 @@
 
       // get last node
       console.log(newLL.tailList());
+
+      // get node using index
+      console.log(newLL.at(0));
 
       // get the full list
       console.log(newLL);
