@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let words = [
+        "antlers",
+        "rentals",
+        "sternal",
+        "article",
+        "recital",
+        "flamboyant",
+      ];
+
+      function getAnagrams(array) {
+        // create new map instance
+        let anagramMap = new Map();
+
+        // loop through the array of words
+        for (let word of words) {
+          // get key using the alphabetically
+          // arranged word from words
+          let key = word.split("").sort().join("");
+
+          // check if the map has this
+          // specific key
+          if (!anagramMap.has(key)) {
+            // if none
+            // set that key as the key and
+            // empty array for its value
+            anagramMap.set(key, []);
+          }
+
+          // push the current word in the
+          // current key in the map
+          anagramMap.get(key).push(word);
+        }
+
+        // then return the map
+        return anagramMap;
+      }
+
+      let anagramMap = getAnagrams(words);
+
+      console.log(anagramMap);
+    </script>
+  </body>
+</html>
