@@ -203,6 +203,106 @@
           return false;
         }
 
+        // method to get the index
+        // of the given value
+        function find(value) {
+          let index = 0;
+
+          let current = this.head;
+
+          // loop through list
+          while (current) {
+            // check if the current value is match
+            // from the given value
+            // if so then return the index
+            if (current.value === value) return index;
+
+            // if not increment index by 1
+            index++;
+
+            // then continue the loop
+            current = current.nextNode;
+          }
+
+          // if no match found return null
+          return null;
+        }
+
+        function toString() {
+          let stringValue = "";
+
+          let current = this.head;
+
+          while (current) {
+            console.log(current);
+
+            stringValue += `( ${current.value} ) -> `;
+            current = current.nextNode;
+          }
+          return stringValue;
+        }
+
+        function insertAt(value, index) {
+          // create a variable for counting the index
+          let currentIndex = 0;
+
+          // get a copy of head/root
+          let current = this.head;
+
+          if (index === 0) {
+            let newNode = node(value, current);
+
+            this.head = newNode;
+            return;
+          }
+
+          // loop through the list
+          while (current) {
+            // check if the currentIndex is equal
+            // to the given index
+            if (currentIndex === index - 1) {
+              // if it is then
+              // create new node
+              // with the given value as the value
+              // and the nextNode property of the
+              // current node is its nextNode property
+              let newNode = node(value, current.nextNode);
+
+              // set the current node's nextNode property
+              // to be the newly created node
+              current.nextNode = newNode;
+
+              // then end the function
+              return;
+            }
+
+            // if not equal yet
+            // increment the index counter by 1
+            currentIndex++;
+
+            // and continue digging down through
+            // the list
+            current = current.nextNode;
+          }
+
+          // then end the function
+          return;
+        }
+
+        function removeAt(index) {
+          let currentIndex = 0;
+          let current = this.head;
+
+          while (current) {
+            if (currentIndex === index - 1) {
+              current.nextNode = current.nextNode.nextNode;
+              return;
+            }
+            currentIndex++;
+            current = current.nextNode;
+          }
+        }
+
         return {
           head,
           append,
@@ -213,6 +313,10 @@
           at,
           pop,
           contains,
+          find,
+          toString,
+          insertAt,
+          removeAt,
         };
       }
 
@@ -246,6 +350,7 @@
 
       // delete the last node
       newLL.pop();
+      newLL.pop();
 
       // get the full list
       console.log(newLL);
@@ -255,7 +360,23 @@
       console.log(newLL.contains(4));
       console.log(newLL.contains("Methusela"));
 
+      // get the index of the given value
+      console.log(newLL.find("Kobe"));
+      console.log(newLL.find("Wick"));
+      console.log(newLL.find("David"));
+      console.log(newLL.find("Mark"));
+
       console.log(newLL.tailList());
+
+      console.log(newLL.toString());
+
+      console.log("New");
+      console.log(newLL);
+      console.log("Updated");
+      newLL.insertAt("Peter", 0);
+      newLL.removeAt(2);
+      newLL.removeAt(4);
+      console.log(newLL);
     </script>
   </body>
 </html>
