@@ -119,6 +119,10 @@
           // return null
           return null;
         }
+
+        has(key) {
+          return this.get(key) ? true : false;
+        }
       }
 
       // create hash map
@@ -135,6 +139,10 @@
       console.log(mapa.get("Peter"));
       console.log(mapa.get("tereP"));
       console.log(mapa.get("James"));
+
+      // check for existence of a key
+      console.log(mapa.has("Judas"));
+      console.log(mapa.has("Peter"));
 
       console.log(mapa);
     </script>
