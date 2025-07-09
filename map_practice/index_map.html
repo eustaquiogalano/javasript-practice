@@ -95,16 +95,28 @@
         // public method for getting a value
         // using a key
         get(key) {
+          // get the index of the bucket using
+          // private hash method
           let index = this.#hash(key);
+
           // checking of bounds on this line to be added later
+
+          // then assign a variable to hold the
+          // selected bucket inside the buckets
           let bucket = this.buckets[index];
 
+          // loop through the bucket
           for (const [k, v] of bucket) {
+            // check if the current key matches
+            // the given key
             if (k === key) {
+              // if true return the current value
               return v;
             }
           }
 
+          // if nothing matches the key
+          // return null
           return null;
         }
       }
