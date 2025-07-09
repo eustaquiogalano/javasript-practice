@@ -41,6 +41,14 @@
           return hashCode;
         }
 
+        // private method to check if the returned index
+        // from hash is outside of bounds of the array
+        #checkBound(index) {
+          if (index < 0 || index >= this.buckets.length) {
+            throw new Error("Index is out of bounds");
+          }
+        }
+
         // public method for appending a key and value pair
         // to the hashmap
         set(key, value) {
