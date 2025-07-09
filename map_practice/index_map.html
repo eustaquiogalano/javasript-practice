@@ -11,27 +11,87 @@
         constructor() {
           this.loadFactor = 0.75;
           this.capacity = 16;
+          this.size = 0;
+          this.buckets = Array(this.capacity)
+            .fill(null)
+            .map(() => []);
         }
 
-        hash(key) {
+        // private method for generating hash code on the given key
+        #hash(key) {
+          // intially set hashCode to 0
           let hashCode = 0;
 
+          // use this recommended prime number
+          // to minimize collision
           const primeNumber = 31;
+
+          // loop through the given key
           for (let i = 0; i < key.length; i++) {
+            // each character
+            // multiply the primeNumber by hashCode
+            // then adding the character code
             hashCode = primeNumber * hashCode + key.charCodeAt(i);
+
+            // ten get the modulo based on maps capacity
             hashCode %= this.capacity;
-            console.log(hashCode);
           }
 
+          // then return the generated hash code
           return hashCode;
+        }
+
+        // public method for appending a key and value pair
+        // to the hashmap
+        set(key, value) {
+          // get the index of the bucket using the
+          // private hash method
+          let index = this.#hash(key);
+
+          // checking of size to be added later in this line
+
+          // then assign a variable to hold the
+          // selected bucket inside the buckets
+          let bucket = this.buckets[index];
+
+          // then loop through the bucket
+          for (let i = 0; i < bucket.length; i++) {
+            // using array destructuring
+            // assign the first element (key) to
+            // currentKey variable
+            const [currentKey] = bucket[i];
+
+            // check if currentKey is the same
+            // as the given key
+            if (currentKey === key) {
+              // if true overwrite the current value
+              bucket[i][1] = value;
+
+              // then end the function
+              return;
+            }
+          }
+
+          // if the bucket is empty
+          // straight away just push the given
+          // key and value pair
+          // to the current bucket
+          bucket.push([key, value]);
+
+          // then increment size by 1
+          this.size++;
+
+          // check if need for resize in line here
         }
       }
 
       const mapa = new HashMap();
+      mapa.set("Peter", "Disciple");
+      mapa.set("James", "Disciple");
+      mapa.set("John", "Disciple");
+      mapa.set("Peter", "Oldest");
 
-      console.log(mapa.hash("Peterasdfasdfasdfasd"));
-      console.log("============================================");
-      console.log(mapa.hash("John"));
+      console.log(mapa);
     </script>
   </body>
 </html>
