@@ -125,6 +125,34 @@
         has(key) {
           return this.get(key) ? true : false;
         }
+
+        remove(key) {
+          let index = this.#hash(key);
+          // checking of bounds to be added later on this line
+          let bucket = this.buckets[index];
+
+          for (let i = 0; i < bucket.length; i++) {
+            if (bucket[i][0] === key) {
+              bucket.splice(i, 1);
+              this.size--;
+              return true;
+            }
+          }
+
+          return false;
+        }
+
+        length() {
+          return this.size;
+        }
+
+        clear() {
+          this.buckets = Array(this.capacity)
+            .fill(null)
+            .map(() => []);
+
+          this.size = 0;
+        }
       }
 
       // create hash map
@@ -146,6 +174,19 @@
       console.log(mapa.has("Judas"));
       console.log(mapa.has("Peter"));
 
+      // remove a key in hash map
+      console.log(mapa);
+      console.log(mapa.remove("Judas"));
+      console.log(mapa.remove("Peter"));
+      console.log(mapa.remove("James"));
+
+      // get the length of the hash map
+      console.log(mapa.length());
+
+      // clear the hash map
+      mapa.clear();
+
+      // latest hash map
       console.log(mapa);
     </script>
   </body>
