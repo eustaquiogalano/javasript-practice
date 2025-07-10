@@ -165,6 +165,18 @@
 
           return allKeys;
         }
+
+        values() {
+          let allValues = [];
+
+          for (let i = 0; i < this.buckets.length; i++) {
+            for (const [key, value] of this.buckets[i]) {
+              allValues.push(value);
+            }
+          }
+
+          return allValues;
+        }
       }
 
       // create hash map
@@ -200,6 +212,9 @@
 
       // get all the keys
       console.log(mapa.keys());
+
+      // get all the values
+      console.log(mapa.values());
 
       // latest hash map
       console.log(mapa);
