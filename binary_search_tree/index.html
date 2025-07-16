@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Node {
+        constructor(data) {
+          this.data = data;
+          this.left = null;
+          this.right = null;
+        }
+      }
+
+      class Tree {
+        constructor(array) {
+          this.root = this.buildTree(array);
+        }
+
+        // private method for sorting an array
+        // in ascending order
+        #mergeSorter(array) {
+          // check the length of the array
+          // and return the aray itself if
+          // there is only one element inside
+          // this is the base step
+          if (array.length === 1) {
+            return array;
+          }
+
+          // if not then proceed to the recursive step below
+
+          // get the middle index of the array
+          const mid = Math.ceil(array.length / 2);
+
+          // recursively use mergeSorter on the right and left
+          // part of the given array
+          const left = this.#mergeSorter(array.slice(0, mid));
+          const right = this.#mergeSorter(array.slice(mid));
+
+          // then proceed on sorting the array in ascending order
+
+          // initialize indeces to 0
+          let l = 0;
+          let r = 0;
+          let result = [];
+
+          // sorting process
+          while (l < left.length && r < right.length) {
+            result.push(left[l] < right[r] ? left[l++] : right[r++]);
+          }
+
+          // another sorting process
+          let arr = result.concat(left.slice(l).concat(right.slice(r)));
+
+          // return the clean and sorted array
+          return this.removeDuplicate(arr);
+        }
+
+        // private method for removing
+        // duplicates on the given array
+        removeDuplicate(array) {
+          return [...new Set(array)];
+        }
+
+        // method for building the exact tree of BST
+        buildTree(array) {
+          // sort the array ascending
+          // and remove duplicates
+          // using this private method
+          array = this.#mergeSorter(array);
+
+          // return the root level 0 of the
+          // tree coming from the given array
+          return this.sortedArrayToBSTRecur(array, 0, array.length - 1);
+        }
+
+        // private method for building the
+        // balanced search tree model
+        // this was used inside buildTree method
+        sortedArrayToBSTRecur(arr, start, end) {
+          // base step of the recursion
+          if (start > end) return null;
+
+          // Find the middle element
+          let mid = start + Math.floor((end - start) / 2);
+
+          // Create root node
+          let root = new Node(arr[mid]);
+
+          // Create left subtree
+          root.left = this.sortedArrayToBSTRecur(arr, start, mid - 1);
+
+          // Create right subtree
+          root.right = this.sortedArrayToBSTRecur(arr, mid + 1, end);
+
+          return root;
+        }
+
+        // public method for logging in the console
+        // the visualization of the BST
+        prettyPrint(node = this.root, prefix = "", isLeft = true) {
+          // if the node is empty
+          // end the function right away
+          if (node === null) {
+            return;
+          }
+
+          // if not go check the left and right property
+
+          // check right if not empty
+          if (node.right !== null) {
+            // then recursion step
+            // with the right property as
+            // the 1st argument
+            this.prettyPrint(
+              node.right,
+              `${prefix}${isLeft ? "│   " : "    "}`,
+              false
+            );
+          }
+
+          // if right is null or the recursion step
+          // finishes log the next line
+          console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+
+          // check left if not empty
+          if (node.left !== null) {
+            // then recursion step
+            // with the left property as
+            // the 1st argument
+            this.prettyPrint(
+              node.left,
+              `${prefix}${isLeft ? "    " : "│   "}`,
+              true
+            );
+          }
+        }
+      }
+
+      // we have here an example from TOP an unordered array
+      let mixedArray = [1, 7, 7, 9, 67, 6345, 324];
+      // original array
+      // [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
+
+      // now we'll make it a balanced binary search tree
+      // using this class
+      const puno = new Tree(mixedArray);
+
+      // preview of the BST result
+      console.log("Preview of the BST");
+      console.log(puno);
+      console.log("");
+
+      // visualization of the BST
+      console.log("Visualization of BST");
+      puno.prettyPrint();
+    </script>
+  </body>
+</html>
