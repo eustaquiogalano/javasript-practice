@@ -140,23 +140,44 @@
           }
         }
 
+        // public method for inserting a node
+        // in the node, specifically at the leaf node
         insert(root, key) {
+          // check first if the given root is null
           if (root === null) {
+            // if true then return
+            // a new node instance
+            // and end the function
             return new Node(key);
           }
 
-          // return the root if key
-          // already exists
+          // return the root itself if key
+          // already exists to end the function
           if (root.data === key) {
             return root;
           }
 
+          // if the first 2 conditions are not met
+          // continue the function
+
+          // check the given key if it is less than
+          // the root data
           if (key < root.data) {
+            // if true, make the left property of
+            // the given root be the return value of
+            // this recursive step (this.insert(root.left, key))
             root.left = this.insert(root.left, key);
+
+            // if not, then check if it is greater than
+            // the root data
           } else if (key > root.data) {
+            // if true, make the left property of
+            // the given root be the return value of
+            // this recursive step (this.insert(root.left, key))
             root.right = this.insert(root.right, key);
           }
 
+          // then return the current root
           return root;
         }
       }
