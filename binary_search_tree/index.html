@@ -102,7 +102,7 @@
 
         // public method for logging in the console
         // the visualization of the BST
-        prettyPrint(node = this.root, prefix = "", isLeft = true) {
+        prettyPrint(node, prefix = "", isLeft = true) {
           // if the node is empty
           // end the function right away
           if (node === null) {
@@ -139,6 +139,26 @@
             );
           }
         }
+
+        insert(root, key) {
+          if (root === null) {
+            return new Node(key);
+          }
+
+          // return the root if key
+          // already exists
+          if (root.data === key) {
+            return root;
+          }
+
+          if (key < root.data) {
+            root.left = this.insert(root.left, key);
+          } else if (key > root.data) {
+            root.right = this.insert(root.right, key);
+          }
+
+          return root;
+        }
       }
 
       // we have here an example from TOP an unordered array
@@ -157,7 +177,13 @@
 
       // visualization of the BST
       console.log("Visualization of BST");
-      puno.prettyPrint();
+      puno.prettyPrint(puno.root);
+      console.log("");
+
+      // insert a node
+      console.log("I inserted 1000");
+      puno.insert(puno.root, 1000);
+      puno.prettyPrint(puno.root);
     </script>
   </body>
 </html>
