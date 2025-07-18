@@ -180,6 +180,81 @@
           // then return the current root
           return root;
         }
+
+        // private method to get the successor
+        // of the given BST
+        getSuccessor(currentRoot) {
+          currentRoot = currentRoot.right;
+
+          // dig deep down the BST until you
+          // reach the end
+          while (currentRoot !== null && currentRoot.left !== null) {
+            currentRoot = currentRoot.left;
+          }
+
+          // then return the end node
+          return currentRoot;
+        }
+
+        // public method for deleting a node
+        // on the given BST
+        deleteItem(root, key) {
+          // if the given root is null
+          // return it and end  the function
+          if (root === null) {
+            return root;
+          }
+
+          // if not then check the data if it is
+          // greater than the given key
+          if (root.data > key) {
+            // then set the left node value to be
+            // the returned value of this
+            // recursive step
+            root.left = this.deleteItem(root.left, key);
+          } else if (root.data < key) {
+            // or if the data is less than the given key
+            // then set the right node value to be
+            // the returned value of this recursive step
+            root.right = this.deleteItem(root.right, key);
+          } else {
+            // if however the data is not greater or
+            // less than the given key
+            // it means it is equal so continue below
+
+            // check if the left node is empty
+            if (root.left === null) {
+              // if true return the right node of the current root
+              return root.right;
+            }
+
+            // if not then check the right node
+            if (root.right === null) {
+              // if true return the right node of the current root
+              return root.left;
+            }
+
+            // of both left and right are not empty
+            //  continue below
+
+            // get the successor using this
+            // private method named getSuccessor with
+            // the current root as the argument
+            let successor = this.getSuccessor(root);
+
+            // set the data of the current root to be
+            // the returned value of getSuccessor method
+            root.data = successor.data;
+
+            // then set the right node to be
+            // the returned value of this
+            // another recursive step
+            root.right = this.deleteItem(root.right, successor.data);
+          }
+
+          // then return the current root
+          return root;
+        }
       }
 
       // we have here an example from TOP an unordered array
@@ -204,6 +279,15 @@
       // insert a node
       console.log("I inserted 1000");
       puno.insert(puno.root, 1000);
+      puno.prettyPrint(puno.root);
+      console.log("");
+
+      // deleting a node
+      puno.deleteItem(puno.root, 1000);
+      puno.deleteItem(puno.root, 7);
+      // puno.deleteItem(puno.root);
+
+      console.log("I deleted a node");
       puno.prettyPrint(puno.root);
     </script>
   </body>
