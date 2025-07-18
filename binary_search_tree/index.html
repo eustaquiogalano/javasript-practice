@@ -256,6 +256,34 @@
           // then return the current root
           return root;
         }
+
+        // public method for searching a value
+        // inside the given BST and returning
+        // null if the value isnt found
+        find(root, key) {
+          // check if the root is null or
+          // if the data property of the root
+          // is equal to the given key
+          // this is also the base step
+          if (root === null || root.data === key) {
+            // if true return the current root
+            return root;
+          }
+          // if not then check if the data is
+          // less than the given key
+          else if (root.data < key) {
+            // if true then return the return value
+            // of this recursive step
+            return this.find(root.right, key);
+          }
+          // if not then check if the data is
+          // greater than the given key
+          else if (root.data > key) {
+            // if true then return the return value
+            // of this recursive step
+            return this.find(root.left, key);
+          }
+        }
       }
 
       // we have here an example from TOP an unordered array
@@ -286,10 +314,14 @@
       // deleting a node
       puno.deleteItem(puno.root, 1000);
       puno.deleteItem(puno.root, 7);
-      // puno.deleteItem(puno.root);
-
       console.log("I deleted a node");
       puno.prettyPrint(puno.root);
+      console.log("");
+
+      // finding a value
+      let findThisValue = 324;
+      console.log(`I am searching for ${findThisValue}`);
+      console.log(puno.find(puno.root, findThisValue));
     </script>
   </body>
 </html>
