@@ -284,6 +284,56 @@
             return this.find(root.left, key);
           }
         }
+
+        // public method for treversing the BST
+        levelOrderForEach(callBack) {
+          // array for queuing each node
+          let levelOrderArray = [];
+
+          // get a reference of the BST
+          let root = this.root;
+
+          // check if the BST is null
+          if (root === null) {
+            // it true then return it right away
+            return levelOrderArray;
+          }
+
+          // if not  then continue
+
+          // push the current root to the array/queue
+          levelOrderArray.push(root);
+
+          // then loop through the array until it is empty
+          while (!(levelOrderArray.length === 0)) {
+            // while there is still a node inside the array
+
+            // get a reference on the first element
+            let current = levelOrderArray[0];
+
+            // then use the given callback to do
+            // what ever you want to do with the
+            // data of the current node
+            callBack(current.data);
+
+            // then check if the left property is not empty
+            if (current.left !== null) {
+              // if true then add the current left property
+              // to the array/queue
+              levelOrderArray.push(current.left);
+            }
+
+            // also check the right property if not empty
+            if (current.right !== null) {
+              // of true then add the current right property
+              // to the array/queue
+              levelOrderArray.push(current.right);
+            }
+
+            // then delete the first element
+            levelOrderArray.shift();
+          }
+        }
       }
 
       // we have here an example from TOP an unordered array
@@ -322,6 +372,12 @@
       let findThisValue = 324;
       console.log(`I am searching for ${findThisValue}`);
       console.log(puno.find(puno.root, findThisValue));
+      console.log("");
+
+      // printing level order traversal
+      puno.levelOrderForEach((root) => {
+        console.log(root);
+      });
     </script>
   </body>
 </html>
