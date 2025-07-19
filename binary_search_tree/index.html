@@ -338,6 +338,69 @@
             levelOrderArray.shift();
           }
         }
+
+        // public method for treversing BST in
+        // depth-first preorder
+        preOrderForEach(root) {
+          // if root is null just return
+          // this is the base step
+          if (root === null) {
+            return;
+          }
+
+          // if not then log the data property
+          console.log(root.data);
+
+          // then recursive step with left property
+          // as the agument
+          this.preOrderForEach(root.left);
+
+          // then another recursive step
+          // with right property as the argument
+          this.preOrderForEach(root.right);
+        }
+
+        // public method for treversing BST in
+        // depth-first inorder
+        inOrderForEach(root) {
+          // if root is null just return
+          // this is the base step
+          if (root === null) {
+            return;
+          }
+
+          // then recursive step with left property
+          // as the agument
+          this.inOrderForEach(root.left);
+
+          // if not then log the data property
+          console.log(root.data);
+
+          // then another recursive step
+          // with right property as the argument
+          this.inOrderForEach(root.right);
+        }
+
+        // public method for treversing BST in
+        // depth-first postorder
+        postOrderForEach(root) {
+          // if root is null just return
+          // this is the base step
+          if (root === null) {
+            return;
+          }
+
+          // then recursive step with left property
+          // as the agument
+          this.postOrderForEach(root.left);
+
+          // then another recursive step
+          // with right property as the argument
+          this.postOrderForEach(root.right);
+
+          // if not then log the data property
+          console.log(root.data);
+        }
       }
 
       // we have here an example from TOP an unordered array
@@ -379,9 +442,29 @@
       console.log("");
 
       // printing level order traversal
+      console.log("Printing each node in level order");
       puno.levelOrderForEach((root) => {
         console.log(root);
       });
+      console.log("");
+
+      // pringting preorder traversal
+      // root - left - right
+      console.log("Printing each node in depth-first preorder traversal");
+      puno.preOrderForEach(puno.root);
+      console.log("");
+
+      // printing inorder traversal
+      // left - root - right
+      console.log("Printing each node in depth-first inorder traversal");
+      puno.inOrderForEach(puno.root);
+      console.log("");
+
+      // printing postorder traversal
+      // left - right - root
+      console.log("Printing each node in depth-first postorder traversal");
+      puno.postOrderForEach(puno.root);
+      console.log("");
     </script>
   </body>
 </html>
