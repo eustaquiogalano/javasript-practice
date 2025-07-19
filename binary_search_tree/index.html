@@ -287,6 +287,10 @@
 
         // public method for treversing the BST
         levelOrderForEach(callBack) {
+          if (typeof callBack !== "function") {
+            throw new Error("Provide a callback");
+          }
+
           // array for queuing each node
           let levelOrderArray = [];
 
