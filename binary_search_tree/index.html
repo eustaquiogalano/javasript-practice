@@ -402,21 +402,33 @@
           console.log(root.data);
         }
 
+        // public method for getting the height
+        // of the given value to a leaf node
         height(root, key) {
+          // use the find method to search
+          // for the value's location
           let node = this.find(root, key);
+
+          // if not found return null
           if (node === null) {
             return null;
           }
 
+          // if found use that as the argument
+          // for the getHeight private method
           return this.getHeight(node);
         }
 
+        // private method for getting height
         getHeight(node) {
           // base step
+          // if current node is empty
+          // return -1
           if (node === null) {
             return -1;
           }
 
+          // if not then proceed to the recursive step
           return (
             1 + Math.max(this.getHeight(node.left), this.getHeight(node.right))
           );
