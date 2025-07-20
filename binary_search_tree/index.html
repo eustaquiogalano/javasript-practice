@@ -401,6 +401,26 @@
           // if not then log the data property
           console.log(root.data);
         }
+
+        height(root, key) {
+          let node = this.find(root, key);
+          if (node === null) {
+            return null;
+          }
+
+          return this.getHeight(node);
+        }
+
+        getHeight(node) {
+          // base step
+          if (node === null) {
+            return -1;
+          }
+
+          return (
+            1 + Math.max(this.getHeight(node.left), this.getHeight(node.right))
+          );
+        }
       }
 
       // we have here an example from TOP an unordered array
@@ -464,6 +484,12 @@
       // left - right - root
       console.log("Printing each node in depth-first postorder traversal");
       puno.postOrderForEach(puno.root);
+      console.log("");
+
+      // print the height frmo the
+      // given node to the longest path to a leaf node
+      console.log("printing the height of the given value 9");
+      console.log(puno.height(puno.root, 9));
       console.log("");
     </script>
   </body>
