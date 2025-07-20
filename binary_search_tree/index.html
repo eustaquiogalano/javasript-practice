@@ -433,6 +433,44 @@
             1 + Math.max(this.getHeight(node.left), this.getHeight(node.right))
           );
         }
+
+        // public method fo getting
+        // the depth from root node to the
+        // given value
+        depth(root, key) {
+          // just return the value from this
+          // private method invocation
+          return this.getDepth(root, key, 0);
+        }
+
+        // private method for actually getting the
+        // depth number
+        getDepth(root, key, depth) {
+          // base step
+          // just return null if root is empty
+          if (root === null) {
+            return null;
+          }
+          // if not then
+          // check if the key is less than data
+          if (key < root.data) {
+            // if true go to the left
+            // subtree of the current root
+            // and increment the depth by 1
+            return this.getDepth(root.left, key, ++depth);
+          }
+          // if not then
+          // check if the key is greater than data
+          else if (key > root.data) {
+            // if true go to the right
+            // subtree of the current root
+            // and increment the depth by 1
+            return this.getDepth(root.right, key, ++depth);
+          }
+
+          // then return depth
+          return depth;
+        }
       }
 
       // we have here an example from TOP an unordered array
@@ -503,6 +541,11 @@
       console.log("printing the height of the given value 9");
       console.log(puno.height(puno.root, 9));
       console.log("");
+
+      // print the depth from the root node
+      // to the given node
+      console.log("printing the depth of the given value 6345");
+      console.log(puno.depth(puno.root, 6345));
     </script>
   </body>
 </html>
