@@ -471,6 +471,23 @@
           // then return depth
           return depth;
         }
+
+        isBalanced(root = this.root) {
+          if (root === null) {
+            return true;
+          }
+
+          let leftHeight = this.getHeight(root.left);
+          let rightHeight = this.getHeight(root.right);
+
+          let isBalanced = Math.abs(leftHeight - rightHeight) <= 1;
+
+          return (
+            isBalanced &&
+            this.isBalanced(root.left) &&
+            this.isBalanced(root.right)
+          );
+        }
       }
 
       // we have here an example from TOP an unordered array
@@ -546,6 +563,10 @@
       // to the given node
       console.log("printing the depth of the given value 6345");
       console.log(puno.depth(puno.root, 6345));
+      console.log("");
+
+      // check if the BST is balanced or not
+      console.log(`is the BST balanced or not: ${puno.isBalanced()}`);
     </script>
   </body>
 </html>
